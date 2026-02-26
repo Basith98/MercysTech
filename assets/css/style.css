@@ -1,0 +1,148 @@
+/* ===============================
+   LIQUID GLASS NAVBAR
+================================= */
+
+#main-nav {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, padding, width, background-color, border-radius, border, top, left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(0) scale(1);
+}
+
+.nav-scrolled {
+  top: 1.5rem !important;
+  width: 90% !important;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50% !important;
+  transform: translateX(-50%) scale(1) !important;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  padding: 0.75rem 2.5rem !important;
+}
+
+.nav-dark-glass {
+  background: rgba(10, 10, 10, 0.6) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 2px 10px 0 rgba(114, 114, 114, 0.68);
+}
+
+.nav-dark-glass a,
+.nav-dark-glass #mobile-menu-btn {
+  color: white !important;
+}
+
+/* ===============================
+   CUSTOM LAYOUT STYLES
+================================= */
+
+.hero-gradient-text {
+  background: linear-gradient(to right, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cta-gradient {
+  background: linear-gradient(135deg, #468fe2 0%, #4d69e5 50%, #004bc3 100%);
+}
+
+.footer-huge-text {
+  font-size: 20vw;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  opacity: 0.1;
+}
+
+.play-button-hover:hover .play-icon {
+  transform: scale(1.1);
+}
+
+.dark-active {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin-slow {
+    animation: spin-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  body.loading {
+    overflow: hidden !important;
+  }
+  #preloader {
+    background-color: #ffffff;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .swiper-pagination-bullet {
+    background: #fff !important;
+    opacity: 0.5;
+    width: 12px;
+    height: 12px;
+  }
+  .swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #fff !important;
+  }
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Regular.ttf") format("ttf");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Medium.ttf") format("ttf");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Semibold.ttf") format("ttf");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvena";
+  src: url("/assets/fonts/helvana/TTF/Helvena-Black.ttf") format("ttf");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
