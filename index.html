@@ -1,635 +1,587 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Mercys | Redefining the Future of Brands</title>
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/images/Logo/mercys logo nav bar.png" />
 
-<!-- Tailwind CSS CDN with plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Google Fonts: Manrope -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<!-- GSAP for Smooth Animations -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            helvena: ["Helvena", "sans-serif"], // Fallback to Manrope for visual consistency
-          },
-          colors: {
-            primary: '#f425f4',
-            brandDark: '#0a0a0a',
-          },
-        }
-      }
-    }
-  </script>
-<style data-purpose="liquid-glass-navbar">/* Base Navbar State */
-    #main-nav {
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: transform, padding, width, background-color, border-radius, border, top, left;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      top: 0;
-      left: 0;
-      width: 100%;
-      transform: translateX(0) scale(1);
-    }
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Mercys | Redefining the Future of Brands</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/font.css">
 
-    /* 🔥 LIQUID GLASS EFFECT (Scrolled State) */
-    .nav-scrolled {
-      top: 1.5rem !important;
-      width: 90% !important;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      left: 50% !important;
-      transform: translateX(-50%) scale(1) !important;
-      
-      border-radius: 9999px;
-      
-      /* Glassmorphism Core */
-      background: rgba(255, 255, 255, 0.7) !important;
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      
-      /* Subtle Borders & Depth */
-      border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-      
-      padding: 0.75rem 2.5rem !important;
-    }
 
-    /* 🔥 DARK LIQUID GLASS (For Dark Sections) */
-    .nav-dark-glass {
-      background: rgba(10, 10, 10, 0.6) !important;
-      backdrop-filter: blur(24px) saturate(180%) !important;
-      -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-      border: 1.5px solid rgba(255, 255, 255, 0.4) !important;
-      box-shadow: 0 2px 10px 0 rgba(114, 114, 114, 0.68);
-    }
+  <!-- Tailwind CSS (locally generated – replaces broken cdn.tailwindcss.com) -->
+  <link href="assets/css/tailwind-generated.css" rel="stylesheet" />
+  <!-- Google Fonts: Manrope -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <!-- GSAP for Smooth Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
-    .nav-dark-glass a {
-      color: white !important;
-    }
-
-    .nav-dark-glass #mobile-menu-btn {
-      color: white !important;
-    }</style>
-<style data-purpose="custom-layouts">
-    .hero-gradient-text {
-      background: linear-gradient(to right, #ffffff, #cccccc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .cta-gradient {
-      background: linear-gradient(135deg, #468fe2 0%, #4d69e5 50%, #004bc3 100%);
-    }
-    .footer-huge-text {
-      font-size: 20vw;
-      line-height: 0.8;
-      letter-spacing: -0.05em;
-      opacity: 0.1;
-    }
-    .play-button-hover:hover .play-icon {
-      transform: scale(1.1);
-    }
-    .dark-active {
-      background-color: #000 !important;
-      color: #fff !important;
-    }
-  </style>
-<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script><link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
 
 </head>
-<body class="bg-white text-brandDark font-helvena antialiased"><!-- Preloader Overlay -->
-<div class="fixed inset-0 z-[100] flex items-center justify-center bg-white" id="preloader"><div class="flex items-center justify-center">
-<dotlottie-wc autoplay="" loop="" src="https://lottie.host/2166503a-6666-4067-8864-c17231bf693b/DoxCIwVxFk.lottie" style="width: 300px; height: 300px"></dotlottie-wc>
-</div></div>
-<style>
-  @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-  body.loading {
-    overflow: hidden !important;
-  }
-  #preloader {
-    background-color: #ffffff;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
-  }
-</style>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loading');
-    
-    // Using GSAP for high-end feel
-    const tl = gsap.timeline({
-      onComplete: () => {
-        document.body.classList.remove('loading');
-        document.getElementById('preloader').style.display = 'none';
-      }
-    });
 
-    tl.to("#preloader", {
-      opacity: 0,
-      duration: 1,
-      delay: .2,
-      ease: "power2.inOut"
-    });
-  });
-</script>
-<!-- BEGIN: Navigation -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white px-6 py-10 flex justify-between items-center" id="main-nav">
-<!-- Logo -->
-<div class="flex items-center gap-2">
-<a href="#">
-<img alt="Mercys Logo" class="lg:max-w-[160px] max-w-[120px] transition-all duration-300" id="main-logo" src="assets/images/logos/mercys _black_logo2.png"/>
-</a>
-</div>
-<!-- Desktop Nav -->
-<nav class="hidden md:flex items-center gap-10 text-sm font-helvena font-bold tracking-[0.2em] uppercase transition-colors">
-<a class="hover:text-primary transition-colors" href="#">What We Do</a>
-<a class="hover:text-primary transition-colors" href="#">Work</a>
-<a class="hover:text-primary transition-colors" href="#">We M</a>
-<a class="hover:text-primary transition-colors" href="#">Contact</a>
-</nav>
-<!-- Mobile Menu Icon -->
-<button class="md:hidden text-brandDark" id="mobile-menu-btn">
-<svg class="h-6 w-6" fill="none" stroke="currentColor" viewbox="0 0 24 24">
-<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-</button>
-</header>
-<!-- END: Navigation -->
-<main>
-<!-- BEGIN: HeroSection -->
-<section class="relative h-screen min-h-[600px] overflow-hidden" data-purpose="hero">
-<div class="swiper heroSwiper h-full w-full">
-<div class="swiper-wrapper">
-<!-- Slide 1 -->
-<div class="swiper-slide relative">
-<img alt="Brand Image 1" class="absolute inset-0 w-full h-full object-cover" src="assets/images/Banner/phillicare.png"/>
-<div class="absolute inset-0 bg-black/40"></div>
-<div class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
-<div class="max-w-5xl text-left w-full"><h1 class="text-5xl md:text-7xl lg:text-8xl font-helvena font-extrabold leading-[1.05] uppercase tracking-tighter text-left mb-12">
-  REDEFINING THE <br/> FUTURE OF BRANDS.
-</h1></div>
-</div>
-</div>
-<!-- Slide 2 -->
-<div class="swiper-slide relative">
-<img alt="Brand Image 2" class="absolute inset-0 w-full h-full object-cover" src="assets/images/Banner/portrait-woman-wearing-virtual-reality-glasses-street-against-yellow-wall-bright-sunlight-winter-warm-clothes.jpg"/>
-<div class="absolute inset-0 bg-black/40"></div>
-<div class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
-<div class="max-w-5xl text-left w-full"><h1 class="text-5xl md:text-7xl lg:text-8xl font-helvena font-extrabold leading-[1.05] uppercase tracking-tighter text-left mb-12">
-  REDEFINING THE <br/> FUTURE OF BRANDS.
-</h1></div>
-</div>
-</div>
-<!-- Slide 3 -->
-<div class="swiper-slide relative">
-<img alt="Brand Image 3" class="absolute inset-0 w-full h-full object-cover" src="assets/images/Banner/Landing page header  my house cover size.png"/>
-<div class="absolute inset-0 bg-black/40"></div>
-<div class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
-<div class="max-w-5xl text-left w-full"><h1 class="text-5xl md:text-7xl lg:text-8xl font-helvena font-extrabold leading-[1.05] uppercase tracking-tighter text-left mb-12">
-  REDEFINING THE <br/> FUTURE OF BRANDS.
-</h1></div>
-</div>
-</div>
-</div>
-<!-- Pagination & Navigation -->
-<div class="swiper-pagination !bottom-10"></div>
-<div class="swiper-button-next !text-white !right-10 after:!text-2xl hidden md:flex"></div>
-<div class="swiper-button-prev !text-white !left-10 after:!text-2xl hidden md:flex"></div>
-</div>
-</section>
-<!-- END: HeroSection -->
-<!-- BEGIN: ValueProposition -->
-<section class="py-24 md:py-32 bg-white" data-purpose="value-prop">
-<div class="max-w-5xl mx-auto px-6">
-<div class="flex flex-col md:flex-row items-baseline gap-4">
-<span class="text-xl font-helvena font-regular text-gray-400 tracking-tighter md:-translate-y-3">Mercys</span>
-<h2 class="text-3xl md:text-5xl font-helvena font-regular leading-tight tracking-tight">
-          We Merge <span class="underline decoration-1 underline-offset-8">Ideas</span>, <span class="underline decoration-1 underline-offset-8">Design</span> &amp; <span class="underline decoration-1 underline-offset-8">Technology</span> <br class="hidden md:block"/> into one <span class="underline decoration-1 underline-offset-8">Seamless System</span>.
-        </h2>
-</div>
-</div>
-</section>
-<!-- END: ValueProposition -->
-<!-- BEGIN: ShowreelSection -->
-<section class="relative h-[60vh] md:h-[80vh] overflow-hidden group play-button-hover" data-purpose="showreel">
-<img alt="Showreel Background" class="w-full h-full object-cover" src="assets/images/show reel/high-angle-kids-putting-hands-together.jpg"/>
-<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-<button class="flex flex-col items-center gap-4 text-white">
-<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-white flex items-center justify-center play-icon transition-transform duration-500">
-<svg class="w-10 h-10 md:w-14 md:h-14 fill-current ml-2" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-</div>
-<span class="text-xl md:text-2xl font-helvena font-bold tracking-widest uppercase">Show Reel</span>
-</button>
-</div>
-</section>
-<!-- END: ShowreelSection -->
-<!-- BEGIN: CoreFramework -->
-<section class="py-32 md:py-48 bg-white" data-purpose="core-framework">
-<h3 class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20">
-      Core Framework
-    </h3>
-<div class="w-full px-4 md:px-12 lg:px-20">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-<!-- Card: Marketing -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/Marketing.jpg.jpeg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">M</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Marketing</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• Search Engine Optimisation</span>
-<span>• Social Media Management</span>
-<span>• Performance Marketing</span>
-<span>• Content Marketing</span>
-<span>• Marketing Automation</span>
-<span>• Analytics & Reporting</span>
-</div>
-</div>
-<!-- Card: Experience -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/experience.jpg.jpeg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">E</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Experience</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• UI / UX Design</span>
-<span>• Web Design</span>
-<span>• Mobile Application</span>
-<span>• E-Commerce Experience</span>
-</div>
-</div>
-<!-- Card: Research -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/research.jpg.jpeg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">R</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Research</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• Brand Discovery</span>
-<span>• User Research</span>
-<span>• Market Analysis</span>
-<span>• Product Strategy</span>
-<span>• Experience Mapping</span>
+<body class="bg-white text-brandDark font-helvena antialiased skeleton-loading">
 
-</div>
-</div>
+  <!-- Skeleton Screen (Instagram/Facebook style) -->
+  <div class="skeleton-screen" id="skeleton-screen">
+    <!-- Skeleton Navbar -->
+    <div class="w-full px-6 lg:px-16 py-6 lg:py-8 flex justify-between items-center bg-white">
+      <div class="skeleton" style="width: 120px; height: 36px;"></div>
+      <div class="hidden md:flex items-center gap-8">
+        <div class="skeleton" style="width: 80px; height: 14px;"></div>
+        <div class="skeleton" style="width: 50px; height: 14px;"></div>
+        <div class="skeleton" style="width: 50px; height: 14px;"></div>
+        <div class="skeleton" style="width: 65px; height: 14px;"></div>
+      </div>
+      <div class="md:hidden skeleton" style="width: 24px; height: 24px;"></div>
+    </div>
 
-<!-- Card: Research -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/create.jpg.jpeg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">C</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Creative</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• Brand Consulting</span>
-<span>• Logo Design</span>
-<span>• Graphic Design</span>
-<span>• 2D / 3D Visualisation</span>
-<span>• Video Production</span>
-</div>
-</div>
+    <!-- Skeleton Hero -->
+    <div class="w-full bg-gray-100" style="height: calc(100vh - 88px); padding: 0 24px;">
+      <div class="flex flex-col justify-end h-full pb-20 md:pb-32 px-6 md:px-12 lg:px-20">
+        <div class="skeleton" style="width: 65%; max-width: 600px; height: 48px; margin-bottom: 16px;"></div>
+        <div class="skeleton" style="width: 50%; max-width: 450px; height: 48px;"></div>
+      </div>
+    </div>
+  </div>
 
-<!-- Card: Research -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/Technology.jpg.jpeg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Y</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Your Technology</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• Software Development</span>
-<span>• Web Applications</span>
-<span>• Mobile Applications</span>
-<span>• Custom Platforms</span>
-<span>• System Integrations</span>
-</div>
-</div>
+  <!-- BEGIN: Navigation -->
+  <header class="fixed top-0 left-1/2 -translate-x-1/2
+         w-full
+         z-50 bg-white
+         flex justify-between items-center
+         transition-all duration-500" id="main-nav">
+    <!-- Logo -->
+    <div class="flex items-center gap-2 nav-logo-wrap">
+      <a href="#">
+        <img alt="Mercys Logo" class="h-6 transition-all duration-500" id="main-logo"
+          src="assets/images/Logo/mercys logo nav bar.png" />
+      </a>
+    </div>
+    <!-- Desktop Nav -->
+    <nav
+      class="hidden md:flex items-center gap-4 text-lg font-helvena font-medium tracking-normal transition-colors nav-links">
+      <a class="text-gray-600 hover:text-black transition-colors px-2" href="coming-soon.html">What We Do</a>
+      <a class="text-gray-600 hover:text-black transition-colors px-2" href="coming-soon.html">Work</a>
+      <a class="text-gray-600 hover:text-black transition-colors px-2" href="coming-soon.html">We M</a>
+      <a class="text-gray-600 hover:text-black transition-colors px-2" href="contact.html">Contact</a>
+    </nav>
+    <!-- Mobile Menu Icon -->
+    <button class="md:hidden text-brandDark" id="mobile-menu-btn" aria-label="Toggle menu">
+      <!-- Hamburger icon -->
+      <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+      </svg>
+      <!-- Close (X) icon — hidden by default -->
+      <svg id="icon-close" class="h-6 w-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+      </svg>
+    </button>
+  </header>
 
-<!-- Card: Research -->
-<div class="cursor-pointer">
-<div class="relative aspect-[4/3] overflow-hidden group">
-<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/core framework/system.jpg"/>
-<div class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<span class="text-white text-7xl font-helvena font-extrabold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">S</span>
-</div>
-</div>
-<h4 class="text-lg font-helvena font-extrabold leading-tight mt-4 mb-2">Systems</h4>
-<div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
-<span>• Digital Transformation</span>
-<span>• Workflow Automation</span>
-<span>• Analytics Integration</span>
-<span>• Growth Frameworks</span>
-<span>• Ongoing Optimization</span>
-</div>
-</div>
+  <!-- Mobile Nav: dimmed backdrop -->
+  <div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
 
-</div>
-</div>
-</section>
-<!-- END: CoreFramework -->
-<!-- BEGIN: StickyScroll -->
-<section class="py-32 md:py-48 bg-white transition-all duration-700" id="dark-section">
-<div class="h-[500vh] relative" id="sticky-sequence-trigger">
-<div class="sticky top-0 h-screen flex flex-col md:flex-row justify-center md:justify-between items-center gap-8 px-6 max-w-7xl mx-auto overflow-hidden">
-<div class="flex items-center gap-6">
-<span class="text-6xl md:text-8xl font-helvena font-black lowercase tracking-tighter">we</span>
-<p class="text-xl font-helvena font-bold leading-tight">don't Work in Silos<br/>Bring It All Together.</p>
-</div>
-<div class="flex items-center gap-6">
-<span class="w-1.5 h-1.5 bg-current rounded-full"></span>
-<div class="h-[80px] md:h-[120px] overflow-hidden">
-<div class="flex flex-col" id="sequence-text-wrapper">
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Discover</h2>
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Research</h2>
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Design</h2>
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Build</h2>
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Launch</h2>
-<h2 class="text-6xl md:text-9xl font-helvena font-bold tracking-tight h-[80px] md:h-[120px] flex items-center">Optimize</h2>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><section class="py-24 md:py-32 bg-gray-50/50" data-purpose="happy-spotlights">
-<h3 class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20 bg-white">
-    Happy Spotlights
-  </h3>
-<div class="w-full px-4 md:px-12 lg:px-20 mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-20"><!-- Profile 1 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6">
-<img alt="Mufeed Thangal C M" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/happy_spotlights/Mufeed Thangal.jpg"/>
-</div>
-<p class="text-xs text-gray-500 font-helvena font-bold uppercase tracking-wider mb-2">• Adam Holidays &amp; Travels</p>
-<h4 class="text-lg font-helvena font-extrabold mb-1">Mufeed Thangal C M</h4>
-<p class="text-xs text-gray-400 font-helvena font-bold uppercase tracking-widest">CO FOUNDER &amp; DIRECTOR</p>
-</div>
-<!-- Profile 2 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6">
-<img alt="Jimmy Sharma" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/happy_spotlights/Jimmy.jpg"/>
-</div>
-<p class="text-xs text-gray-500 font-helvena font-bold uppercase tracking-wider mb-2">• The Six Creations</p>
-<h4 class="text-lg font-helvena font-extrabold mb-1">Jimmy Sharma</h4>
-<p class="text-xs text-gray-400 font-helvena font-bold uppercase tracking-widest">CHIEF EXECUTIVE OFFICER</p>
-</div>
-<!-- Profile 3 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6">
-<img alt="Yesha Sagar" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="assets/images/happy_spotlights/IMG_4806.png"/>
-</div>
-<p class="text-xs text-gray-500 font-helvena font-bold uppercase tracking-wider mb-2">• Sports Presenter</p>
-<h4 class="text-lg font-helvena font-extrabold mb-1">Yesha Sagar</h4>
-<p class="text-xs text-gray-400 font-helvena font-bold uppercase tracking-widest">MODEL, ACTOR</p>
-</div></div>
-<div class="flex justify-center">
-<button class="w-full py-4 border border-gray-300 rounded-full text-sm font-helvena font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300">
-        See More
-      </button>
-</div>
-</div>
-</section><section class="py-24 md:py-32 bg-white" data-purpose="blogs-insights">
-<h3 class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20">
-    Blogs &amp; Insights
-  </h3>
-<div class="w-full px-4 md:px-12 lg:px-20 mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12"><!-- Blog 1 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
-<img alt="The Art of Growth" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn-p4u57-V9Yy976P_3z-m7q3YfH1q50o8v-H-7z-z1z-z1z-z1z-z1z-z1z-z1z-z"/>
-</div>
-<p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN - 01/06/26</p>
-<h4 class="text-lg font-helvena font-extrabold leading-tight group-hover:text-primary transition-colors duration-300">
-          The Art of Growth: How Design &amp; Tech Power Modern Marketing.
-        </h4>
-</div>
-<!-- Blog 2 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
-<img alt="Why Branding Is More Than a Logo" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn-p4u57-V9Yy976P_3z-m7q3YfH1q50o8v-H-7z-z1z-z1z-z1z-z1z-z1z-z1z-z"/>
-</div>
-<p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN - 01/06/26</p>
-<h4 class="text-lg font-helvena font-extrabold leading-tight group-hover:text-primary transition-colors duration-300">
-          Why Branding Is More Than a Logo: Building Trust in a Digital World.
-        </h4>
-</div>
-<!-- Blog 3 -->
-<div class="group cursor-pointer">
-<div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
-<img alt="Latest Meta Updates" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn-p4u57-V9Yy976P_3z-m7q3YfH1q50o8v-H-7z-z1z-z1z-z1z-z1z-z1z-z1z-z"/>
-</div>
-<p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN - 01/06/26</p>
-<h4 class="text-lg font-helvena font-extrabold leading-tight group-hover:text-primary transition-colors duration-300">
-          Latest Meta Updates: What Businesses Need to Know in 2026!
-        </h4>
-</div></div>
-</div>
-</section>
-<!-- END: StickyScroll -->
-<!-- BEGIN: CallToAction -->
-<section class="py-24 cta-gradient text-white" data-purpose="cta-banner">
-<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-<div>
-<h2 class="text-4xl md:text-5xl font-helvena font-extrabold mb-2">Let's Get Started</h2>
-<p class="text-lg opacity-80">We help you to Grow</p>
-</div>
-<button class="px-12 py-4 border-2 border-white/50 rounded-full text-lg font-helvena font-bold hover:bg-white hover:text-brandDark transition-all duration-300">
-        Contact Us
-      </button>
-</div>
-</section>
-<!-- END: CallToAction -->
-</main>
-<!-- BEGIN: MainFooter -->
-<footer class="bg-brandDark text-white pt-24 pb-12 overflow-hidden" data-purpose="footer">
-<div class="max-w-7xl mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8 pb-16">
-<!-- Left Section -->
-<div class="md:col-span-3">
-<p class="text-gray-500 text-sm">2026 Mercys Global</p>
-</div>
-<!-- Middle Section -->
-<div class="md:col-span-4">
-<h5 class="text-gray-400 text-xs font-helvena font-bold uppercase tracking-widest mb-8">WE'RE HERE TO HELP — REACH OUT ANYTIME</h5>
-<nav class="flex flex-col space-y-4 text-sm font-helvena font-medium">
-<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
-<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
-<a class="hover:text-primary transition-colors" href="#">Privacy Notice</a>
-</nav>
-</div>
-<!-- Right Section -->
-<div class="md:col-span-5 flex flex-col">
-<!-- Social Links -->
-<div class="flex flex-wrap gap-x-8 gap-y-4 text-xs font-helvena font-bold uppercase tracking-widest mb-16">
-<a class="hover:text-primary transition-colors" href="https://wa.me/919656212016">WHATSAPP</a>
-<a class="hover:text-primary transition-colors" href="https://www.instagram.com/mercystech_/">INSTAGRAM</a>
-<a class="hover:text-primary transition-colors" href="https://x.com/mercystech_">TWITTER</a>
-<a class="hover:text-primary transition-colors" href="https://www.facebook.com/mercystech">FACEBOOK</a>
-<a class="hover:text-primary transition-colors" href="https://www.linkedin.com/company/mercysglobal">LINKEDIN</a>
+  <!-- Mobile Nav: floating card overlay -->
+  <div id="mobile-menu" class="mobile-menu-overlay">
+    <nav class="mobile-menu-nav">
+      <a href="coming-soon.html" class="mobile-nav-link">What We Do</a>
+      <a href="coming-soon.html" class="mobile-nav-link">Work</a>
+      <a href="coming-soon.html" class="mobile-nav-link">We M</a>
+      <a href="contact.html" class="mobile-nav-link">Contact</a>
+    </nav>
+  </div>
+  <main>
+    <!-- BEGIN: HeroSection -->
+    <section class="relative h-screen min-h-[600px] overflow-hidden" data-purpose="hero">
+      <div class="swiper heroSwiper h-full w-full">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide relative">
+            <img alt="Brand Image 1" class="absolute inset-0 w-full h-full object-cover"
+              src="assets/images/Banner/phillicare.png" />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
+              <div class="max-w-5xl text-left w-full">
+                <h1
+                  class="text-5xl md:text-7xl lg:text-8xl font-helvena font-semibold leading-[1.05]   tracking-tighter text-left mb-12">
+                  Redefining The <br /> Future Of Brands.
+                </h1>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide relative">
+            <img alt="Brand Image 2" class="absolute inset-0 w-full h-full object-cover"
+              src="assets/images/Banner/portrait-woman-wearing-virtual-reality-glasses-street-against-yellow-wall-bright-sunlight-winter-warm-clothes.jpg" />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
+              <div class="max-w-5xl text-left w-full">
+                <h1
+                  class="text-5xl md:text-7xl lg:text-8xl font-helvena font-semibold leading-[1.05] tracking-tighter text-left mb-12">
+                  Redefining The <br /> Future Of Brands.
+                </h1>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="swiper-slide relative">
+            <img alt="Brand Image 3" class="absolute inset-0 w-full h-full object-cover"
+              src="assets/images/Banner/Landing page header  my house cover size.png" />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="relative z-10 h-full flex items-end justify-start text-white px-6 md:px-12 lg:px-20 pb-20 md:pb-32">
+              <div class="max-w-5xl text-left w-full">
+                <h1
+                  class="text-5xl md:text-7xl lg:text-8xl font-helvena font-semibold leading-[1.05]  tracking-tighter text-left mb-12">
+                  Redefining The <br /> Future Of Brands.
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Pagination & Navigation -->
+        <div class="swiper-pagination !bottom-10"></div>
+        <div class="swiper-button-next !text-white !right-10 after:!text-2xl hidden md:flex"></div>
+        <div class="swiper-button-prev !text-white !left-10 after:!text-2xl hidden md:flex"></div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+    <!-- BEGIN: ValueProposition -->
+    <section class="py-24 md:py-32 bg-white" data-purpose="value-prop">
+      <div class="max-w-5xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-baseline gap-4">
+          <span class="text-xl font-helvena font-regular text-gray-400 tracking-tighter md:-translate-y-3">Mercys</span>
+          <h2 class="text-3xl md:text-5xl font-helvena font-regular leading-tight tracking-tight">
+            We Merge <span class="underline decoration-1 underline-offset-8">Ideas</span>, <span
+              class="underline decoration-1 underline-offset-8">Design</span> &amp; <span
+              class="underline decoration-1 underline-offset-8">Technology</span> <br class="hidden md:block" /> into
+            one <span class="underline decoration-1 underline-offset-8">Seamless System</span>.
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-- END: ValueProposition -->
+    <!-- BEGIN: ShowreelSection -->
+    <section class="relative h-[60vh] md:h-[80vh] overflow-hidden group play-button-hover" data-purpose="showreel">
+      <img alt="Showreel Background" class="w-full h-full object-cover"
+        src="assets/images/show reel/sHOW REEL IMAGE.jpg.jpeg" />
+      <div class="absolute inset-0 bg-black/20"></div>
+      <!-- Cursor-follow show reel label -->
+      <img id="showreel-cursor" src="assets/images/show reel/SHOW REEL.png" alt="Show Reel"
+        class="showreel-cursor-img pointer-events-none" />
+    </section>
+    <!-- END: ShowreelSection -->
+    <!-- BEGIN: CoreFramework -->
+    <section class="py-32 md:py-48 bg-gray-50/80 ">
+      <h3
+        class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20">
+        Core Framework
+      </h3>
+      <div class="w-full px-4 md:px-12 lg:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 max-w-8xl mx-auto">
+          <!-- Card: Marketing -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/marketing.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">M</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Marketing</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• Search Engine Optimisation</span>
+              <span>• Social Media Management</span>
+              <span>• Performance Marketing</span>
+              <span>• Content Marketing</span>
+              <span>• Marketing Automation</span>
+              <span>• Analytics & Reporting</span>
+            </div>
+          </div>
+          <!-- Card: Experience -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/experience.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">E</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Experience</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• UI / UX Design</span>
+              <span>• Web Design</span>
+              <span>• Mobile Application</span>
+              <span>• E-Commerce Experience</span>
+            </div>
+          </div>
+          <!-- Card: Research -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/Research.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">R</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Research</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• Brand Discovery</span>
+              <span>• User Research</span>
+              <span>• Market Analysis</span>
+              <span>• Product Strategy</span>
+              <span>• Experience Mapping</span>
 
-</div>
-<!-- Contact Grid -->
-<div class="grid grid-cols-2 gap-x-8 gap-y-8">
-<div>
-<p class="text-gray-500 text-[10px] uppercase font-helvena font-bold tracking-widest mb-2">GENERAL</p>
-<p class="text-sm font-helvena font-medium"><a href="tel:+919656212016">++91 9656 21 2016</a></p>
-</div>
-<div>
-<p class="text-gray-500 text-[10px] uppercase font-helvena font-bold tracking-widest mb-2">EMAIL</p>
-<p class="text-sm font-helvena font-medium">info@mercystech.com</p>
-</div>
-<div>
-<p class="text-gray-500 text-[10px] uppercase font-helvena font-bold tracking-widest mb-2">BRANDING</p>
-<p class="text-sm font-helvena font-medium"><a href="tel:+917902811513">++91 7902 81 1513</a></p>
-</div>
-<div>
-<p class="text-gray-500 text-[10px] uppercase font-helvena font-bold tracking-widest mb-2">MARKETING</p>
-<p class="text-sm font-helvena font-medium"><a href="tel:+918891814814">++91 8891 81 4814</a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="flex justify-center items-center border-t border-white/10 py-20 border-t border-white/5">
-<img alt="Wolff Olins" class="w-[100%] md:w-[100%] h-auto max-h-[100px] md:max-h-[160px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300 mx-auto" src="assets/images/logos/Mercys Footer.png"/>
-</div>
-</footer>
-<!-- END: MainFooter -->
-<script data-purpose="navbar-logic">
-  /* Handling Navbar Scroll States with RAF for Performance */
-  let isScrolled = false;
-  const nav = document.getElementById('main-nav');
+            </div>
+          </div>
 
-  window.addEventListener('scroll', () => {
-    const shouldBeScrolled = window.scrollY > 80;
-    
-    if (shouldBeScrolled !== isScrolled) {
-      isScrolled = shouldBeScrolled;
-      requestAnimationFrame(() => {
-        if (isScrolled) {
-          nav.classList.add('nav-scrolled');
-        } else {
-          nav.classList.remove('nav-scrolled');
-        }
-      });
-    }
-  }, { passive: true });
+          <!-- Card: Research -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/Create.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">C</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Create</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• Brand Consulting</span>
+              <span>• Logo Design</span>
+              <span>• Graphic Design</span>
+              <span>• 2D / 3D Visualisation</span>
+              <span>• Video Production</span>
+            </div>
+          </div>
 
-  /* GSAP Sticky Sequence Logic */
-  document.addEventListener('DOMContentLoaded', () => {
-    gsap.registerPlugin(ScrollTrigger);
+          <!-- Card: Research -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/Technology.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">Y</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Your Technology</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• Software Development</span>
+              <span>• Web Applications</span>
+              <span>• Mobile Applications</span>
+              <span>• Custom Platforms</span>
+              <span>• System Integrations</span>
+            </div>
+          </div>
 
-    const wrapper = document.querySelector('#sequence-text-wrapper');
-    const items = wrapper.querySelectorAll('h2');
-    const itemHeight = items[0].offsetHeight;
-    const totalScroll = (items.length - 1) * itemHeight;
+          <!-- Card: Research -->
+          <div
+            class="group rounded-2xl bg-white border border-gray-200 p-6 transition duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl">
+              <img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Framework/System.jpg" />
+              <div
+                class="absolute inset-0 bg-black/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span
+                  class="text-white text-7xl font-helvena font-regular translate-y-4 group-hover:translate-y-0 transition-transform duration-300">S</span>
+              </div>
+            </div>
+            <h4 class="text-xl font-helvena font-bold leading-tight mt-5 mb-3 tracking-tight">Systems</h4>
+            <div class="mt-1 grid grid-cols-2 gap-x-6 gap-y-1 text-sm text-gray-600">
+              <span>• Digital Transformation</span>
+              <span>• Workflow Automation</span>
+              <span>• Analytics Integration</span>
+              <span>• Growth Frameworks</span>
+              <span>• Ongoing Optimization</span>
+            </div>
+          </div>
 
-    gsap.to(wrapper, {
-      y: -totalScroll,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#sticky-sequence-trigger",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1.5,
-        snap: 1 / (items.length - 1)
-      }
-    });
+        </div>
+      </div>
+    </section>
+    <!-- END: CoreFramework -->
+    <!-- BEGIN: StickyScroll -->
+    <!-- BEGIN: StickyScroll -->
+    <!-- BEGIN: StickyScroll -->
+    <section class="bg-white transition-all duration-700" id="dark-section">
+      <div class="relative" id="sticky-sequence-trigger" style="height: 600vh;">
+        <div id="sequence-pin-panel"
+          class="sticky top-0 h-screen flex items-center px-6 md:px-12 lg:px-20 overflow-hidden">
 
-    /* Dark Mode Section Trigger */
-    ScrollTrigger.create({
-      trigger: "#dark-section",
-      start: "top 20%",
-      end: "bottom 80%",
-      onEnter: activateDarkMode,
-      onEnterBack: activateDarkMode,
-      onLeave: deactivateDarkMode,
-      onLeaveBack: deactivateDarkMode
-    });
+          <!-- Desktop layout (unchanged from your original working version) -->
+          <div class="hidden md:flex md:items-center w-full gap-0 max-w-7xl mx-auto">
+            <div class="flex items-start gap-6 md:w-[40%] flex-shrink-0">
+              <span
+                class="text-6xl md:text-9xl font-helvena font-regular lowercase tracking-tighter leading-none">we</span>
+              <p class="text-base md:text-4xl font-helvena font-normal leading-snug"
+                style="margin-top: clamp(1.2rem, 2vw, 2.5rem);">don't Work in Silos<br />Bring It All Together.</p>
+            </div>
+            <div class="flex items-center md:w-[60%] desktop-pad">
+              <div class="sequence-mask">
+                <div id="sequence-text-wrapper" style="will-change: transform;">
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Discover</h2>
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Research</h2>
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Design</h2>
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Build</h2>
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Launch</h2>
+                  <h2 class="sequence-word text-4xl md:text-9xl font-helvena font-regular tracking-tight">Optimize</h2>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    function activateDarkMode() {
-      document.getElementById("dark-section").classList.add("dark-active");
-      document.getElementById("main-nav").classList.add("nav-dark-glass");
-      const logo = document.getElementById("main-logo");
-      logo.style.filter = "invert(1) brightness(10)"; 
-    }
 
-    function deactivateDarkMode() {
-      document.getElementById("dark-section").classList.remove("dark-active");
-      document.getElementById("main-nav").classList.remove("nav-dark-glass");
-      const logo = document.getElementById("main-logo");
-      logo.style.filter = "none";
-    }
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const swiper = new Swiper('.heroSwiper', {
-      loop: true,
-      speed: 1000,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      effect: 'fade',
-      fadeEffect: {
-        crossFade: true
-      }
-    });
-  });
-</script>
-<style>
-  .swiper-pagination-bullet {
-    background: #fff !important;
-    opacity: 0.5;
-    width: 12px;
-    height: 12px;
-  }
-  .swiper-pagination-bullet-active {
-    opacity: 1;
-    background: #fff !important;
-  }
-</style>
-<script src="assets/js/main.js"></script>
+          <!-- Mobile layout -->
+          <div class="flex md:hidden flex-col w-full gap-8 items-center justify-center px-6">
+            <!-- Row 1: we + tagline - centered -->
+            <div class="flex items-start gap-3 justify-center w-full">
+              <span class="text-6xl font-helvena font-regular lowercase tracking-tighter leading-none">we</span>
+              <p class="text-base font-helvena font-normal leading-snug" style="margin-top: .8rem; text-align: left;">
+                don't Work in Silos<br />Bring It All Together.
+              </p>
+            </div>
+            <!-- Row 2: bullet + scrolling word - centered -->
+            <div class="flex items-center gap-2 justify-center w-full">
+              <div style="position: relative; height: 50px; width: 220px; margin-left: 20px;">
+                <h2 class=" sequence-word-mobile text-5xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; left:0; white-space:nowrap;">Discover</h2>
+                <h2 class="sequence-word-mobile text-5xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; left:0; white-space:nowrap;">Research</h2>
+                <h2 class="sequence-word-mobile text-6xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; left:0; white-space:nowrap;">Design</h2>
+                <h2 class="sequence-word-mobile text-6xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; margin-left:40px; white-space:nowrap;">Build</h2>
+                <h2 class="sequence-word-mobile text-6xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; left:0; white-space:nowrap;">Launch</h2>
+                <h2 class="sequence-word-mobile text-6xl font-helvena font-regular tracking-tight"
+                  style="position:absolute; top:0; margin-right:40px; white-space:nowrap;">Optimize</h2>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="happy-spotlights" class="pt-32 pb-24 md:pt-40 md:pb-32 bg-gray-50/50" data-purpose="happy-spotlights">
+      <h3
+        class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20 bg-white">
+        Happy Spotlights
+      </h3>
+      <div class="w-full px-4 md:px-12 lg:px-20 mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <!-- Card 1 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="Mufeed Thangal C M"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Happy Spotlights/Happy Spotlights/MUFEED THANGAL.jpg" />
+            </div>
+            <p class="text-s text-gray-500 font-helvena font-regular tracking-normal mb-3">• Adam Holidays
+              &amp; Travels — Co Founder &amp; Director</p>
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              Mufeed Thangal C M
+            </h4>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="Jimmy Sharma"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Happy Spotlights/Happy Spotlights/Jimmy.jpg" />
+            </div>
+            <p class="text-s text-gray-500 font-helvena font-regular tracking-normal mb-3">• The Six
+              Creations — Chief Executive Officer</p>
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              Jimmy Sharma
+            </h4>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="Yesha Sagar"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Happy Spotlights/Happy Spotlights/YESHA.jpg" />
+            </div>
+            <p class="text-s text-gray-500 font-helvena font-regular tracking-normal mb-3">• TSports
+              Presenter — Model, Actor</p>
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              Yesha Sagar
+            </h4>
+          </div>
+
+
+        </div>
+        <!-- See More -->
+        <div class="flex justify-center" style="margin-top: 6rem;">
+          <button onclick="window.location.href='coming-soon.html'"
+            class="w-full py-4 border border-gray-300 rounded-full text-sm font-helvena font-bold uppercase tracking-[0.2em] hover:bg-black hover:text-white transition-all duration-300">
+            See More
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 md:py-32 bg-white" data-purpose="blogs-insights">
+      <h3
+        class="text-5xl font-helvena font-regular mb-16 border-b border-t border-gray-300 py-6 px-4 md:px-12 lg:px-20">
+        Blogs &amp; Insights
+      </h3>
+      <div class="w-full px-4 md:px-12 lg:px-20 mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12"><!-- Blog 1 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="The Art of Growth"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Blogs/BLOG IMAGE.jpg" />
+            </div>
+            <!-- <p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN -
+              01/06/26</p> -->
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              The Art of Growth: How Design &amp; Tech Power Modern Marketing.
+            </h4>
+          </div>
+          <!-- Blog 2 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="Why Branding Is More Than a Logo"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Blogs/phn.jpg" />
+            </div>
+            <!-- <p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN -
+              01/06/26</p> -->
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              Why Branding Is More Than a Logo: Building Trust in a Digital World.
+            </h4>
+          </div>
+          <!-- Blog 3 -->
+          <div class="group cursor-pointer">
+            <div class="aspect-[4/3] overflow-hidden mb-6 bg-gray-100">
+              <img alt="Latest Meta Updates"
+                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                src="assets/images/Blogs/Tech.jpeg" />
+            </div>
+            <!-- <p class="text-[10px] text-gray-500 font-helvena font-bold uppercase tracking-widest mb-3">BLOG - 12 MIN -
+              01/06/26</p> -->
+            <h4
+              class="text-lg font-helvena font-semibold leading-tight group-hover:text-gray-400 transition-colors duration-300">
+              Latest Meta Updates: What Businesses Need to Know in 2026!
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: StickyScroll -->
+    <!-- BEGIN: CallToAction -->
+    <section class="py-24 cta-gradient text-white" data-purpose="cta-banner">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+          <h2 class="text-4xl md:text-5xl font-helvena font-extrabold mb-2">Let's Get Started</h2>
+          <p class="text-lg opacity-80">We help you to Grow</p>
+        </div>
+        <button onclick="location.href='contact.html'"
+          class="px-12 py-4 border-2 border-white/50 rounded-full text-lg font-helvena font-bold hover:bg-white hover:text-brandDark transition-all duration-300">
+          Contact Us
+        </button>
+      </div>
+    </section>
+    <!-- END: CallToAction -->
+  </main>
+  <!-- BEGIN: MainFooter -->
+  <footer class="bg-brandDark text-white pt-24 pb-12 overflow-hidden" data-purpose="footer">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8 pb-16">
+        <!-- Left Section -->
+        <div class="md:col-span-3">
+          <p class="text-gray-500 text-sm">2026 Mercys Global</p>
+        </div>
+        <!-- Middle Section -->
+        <div class="md:col-span-4">
+          <h5 class="text-gray-400 text-xs font-helvena font-bold tracking-widest mb-8">We're here to help —
+            reach out anytime</h5>
+          <nav class="flex flex-col space-y-4 text-sm font-helvena font-medium">
+            <a class="hover:text-gray-400 transition-colors" href="contact.html">Contact Us</a>
+            <a class="hover:text-gray-400 transition-colors" href="coming-soon.html">Cookie Policy</a>
+            <a class="hover:text-gray-400 transition-colors" href="coming-soon.html">Privacy Notice</a>
+          </nav>
+        </div>
+        <!-- Right Section -->
+        <div class="md:col-span-5 flex flex-col">
+          <!-- Social Links -->
+          <div class="flex flex-wrap gap-x-8 gap-y-4 text-xs font-helvena font-bold tracking-widest mb-16">
+            <a class="hover:text-gray-400 transition-colors" href="https://wa.me/919656212016">WhatsApp</a>
+            <a class="hover:text-gray-400 transition-colors" href="https://www.instagram.com/mercystech_/">Instagram</a>
+            <a class="hover:text-gray-400 transition-colors" href="https://x.com/mercystech_">Twitter</a>
+            <a class="hover:text-gray-400 transition-colors" href="https://www.facebook.com/mercystech">Facebook</a>
+            <a class="hover:text-gray-400 transition-colors"
+              href="https://www.linkedin.com/company/mercysglobal">Linkedin</a>
+
+          </div>
+          <!-- Contact Grid -->
+          <div class="grid grid-cols-2 gap-x-8 gap-y-8">
+            <div>
+              <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">General</p>
+              <p class="text-sm font-helvena font-medium"><a href="tel:+919656212016">+91 9656 21 2016</a></p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Email</p>
+              <p class="text-sm font-helvena font-medium">info@mercystech.com</p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Branding</p>
+              <p class="text-sm font-helvena font-medium"><a href="tel:+917902811513">+91 7902 81 1513</a></p>
+            </div>
+            <div>
+              <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Marketing</p>
+              <p class="text-sm font-helvena font-medium"><a href="tel:+918891814814">++91 8891 81 4814</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-12 pb-0">
+      <img alt="Mercys logo" style="width:100%; display:block; opacity:0.9; padding: 3%;"
+        src="assets/images/Logo/Mercys Footer grey.png" />
+    </div>
+  </footer>
+  <!-- END: MainFooter -->
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/index.js"></script>
 </body>
+
 </html>

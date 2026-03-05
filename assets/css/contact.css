@@ -1,0 +1,371 @@
+ /* Budget chips */
+ .budget-chip {
+     padding: 0.5rem 1.25rem;
+     border: 1px solid #d1d5db;
+     border-radius: 999px;
+     font-family: Helvena, Manrope, sans-serif;
+     font-size: 0.8rem;
+     font-weight: 500;
+     color: #6b7280;
+     background: transparent;
+     cursor: pointer;
+     transition: all 0.2s ease;
+ }
+
+ .budget-chip:hover {
+     border-color: #0a0a0a;
+     color: #0a0a0a;
+ }
+
+ .budget-chip.selected {
+     background: #0a0a0a;
+     color: #fff;
+     border-color: #0a0a0a;
+ }
+
+ /* =========================================================
+       🧈 LENIS SMOOTH SCROLL BASE
+    ========================================================= */
+
+ html.lenis,
+ html.lenis body {
+     height: auto;
+ }
+
+ .lenis.lenis-smooth {
+     scroll-behavior: auto !important;
+ }
+
+ .lenis.lenis-smooth [data-lenis-prevent] {
+     overscroll-behavior: contain;
+ }
+
+ .lenis.lenis-stopped {
+     overflow: hidden;
+ }
+
+ /* =========================================================
+       ✨ REVEAL ANIMATIONS
+    ========================================================= */
+ .reveal-up {
+     opacity: 0;
+     transform: translateY(60px);
+     transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-up.revealed {
+     opacity: 1;
+     transform: translateY(0);
+ }
+
+ .reveal-stagger>* {
+     opacity: 0;
+     transform: translateY(40px);
+     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-stagger.revealed>* {
+     opacity: 1;
+     transform: translateY(0);
+ }
+
+ .reveal-stagger.revealed>*:nth-child(1) {
+     transition-delay: 0s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(2) {
+     transition-delay: 0.1s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(3) {
+     transition-delay: 0.15s;
+ }
+
+ /* =========================================================
+       🔥 NAVBAR — EXACT COPY FROM MAIN SITE
+    ========================================================= */
+ #main-nav {
+     position: fixed;
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 100%;
+     padding: 2rem 5rem;
+     background: #ffffff;
+     border-radius: 0;
+     border: 1px solid transparent;
+     will-change: width, border-radius, padding, background, top;
+     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ #main-logo {
+     height: 24px;
+     transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .nav-logo-wrap {
+     margin-left: 0;
+     transition: margin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .nav-links {
+     margin-right: 0;
+     transition: margin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .nav-scrolled {
+     top: 1.25rem;
+     width: 65%;
+     max-width: 860px;
+     padding: 0.65rem 2rem;
+     border-radius: 999px !important;
+     background: rgba(255, 255, 255, 0.82);
+     backdrop-filter: blur(20px) saturate(180%);
+     -webkit-backdrop-filter: blur(20px) saturate(180%);
+     border: 1px solid rgba(255, 255, 255, 0.5);
+     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+ }
+
+ .nav-scrolled #main-logo {
+     padding-top: 5px;
+     height: 26px;
+ }
+
+ .nav-scrolled .nav-logo-wrap {
+     margin-left: 0;
+ }
+
+ .nav-scrolled .nav-links {
+     margin-right: 0;
+ }
+
+ /* =========================================================
+       GREY HOVER (missing from generated Tailwind)
+    ========================================================= */
+ .hover\:text-gray-400:hover {
+     --tw-text-opacity: 1;
+     color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+ }
+
+ .group:hover .group-hover\:text-gray-400 {
+     --tw-text-opacity: 1;
+     color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+ }
+
+ /* =========================================================
+       📄 CONTACT PAGE SPECIFIC STYLES
+    ========================================================= */
+
+ /* Hero headline */
+ .contact-hero {
+     padding-top: 12rem;
+     padding-bottom: 5rem;
+     border-bottom: 1px solid #e5e7eb;
+     background-color: #f9fafb;
+ }
+
+ .contact-hero h1 {
+     font-size: clamp(3rem, 8vw, 7rem);
+     font-weight: 400;
+     line-height: 1;
+     letter-spacing: -0.04em;
+     color: #0a0a0a;
+ }
+
+ /* Enquiry tabs */
+ .enquiry-tabs {
+     display: flex;
+     gap: 0;
+     border-bottom: 1px solid #e5e7eb;
+ }
+
+ .enquiry-tab {
+     padding: 1rem 2rem 1rem 0;
+     font-size: 0.875rem;
+     font-weight: 500;
+     letter-spacing: 0.02em;
+     color: #9ca3af;
+     cursor: pointer;
+     border-bottom: 2px solid transparent;
+     margin-bottom: -1px;
+     transition: color 0.25s ease, border-color 0.25s ease;
+     background: none;
+     border-top: none;
+     border-left: none;
+     border-right: none;
+     font-family: Helvena, Manrope, sans-serif;
+ }
+
+ .enquiry-tab:hover {
+     color: #0a0a0a;
+ }
+
+ .enquiry-tab.active {
+     color: #0a0a0a;
+     border-bottom-color: #0a0a0a;
+ }
+
+ /* Form inputs */
+ .form-field {
+     width: 100%;
+     border: none;
+     border-bottom: 1px solid #d1d5db;
+     padding: 1.25rem 0;
+     font-size: 1rem;
+     font-family: Helvena, Manrope, sans-serif;
+     font-weight: 400;
+     color: #0a0a0a;
+     background: transparent;
+     outline: none;
+     transition: border-color 0.25s ease;
+ }
+
+ .form-field::placeholder {
+     color: #9ca3af;
+ }
+
+ .form-field:focus {
+     border-bottom-color: #0a0a0a;
+ }
+
+ textarea.form-field {
+     resize: none;
+     min-height: 120px;
+ }
+
+ /* Submit button */
+ .submit-btn {
+     display: inline-flex;
+     align-items: center;
+     gap: 0.75rem;
+     padding: 1.1rem 2.5rem;
+     background: #0a0a0a;
+     color: #fff;
+     border: none;
+     border-radius: 999px;
+     font-family: Helvena, Manrope, sans-serif;
+     font-size: 0.875rem;
+     font-weight: 600;
+     letter-spacing: 0.06em;
+     text-transform: uppercase;
+     cursor: pointer;
+     transition: background 0.25s ease, transform 0.2s ease;
+ }
+
+ .submit-btn:hover {
+     background: #9ca3af;
+     transform: translateY(-1px);
+ }
+
+ .submit-btn svg {
+     transition: transform 0.2s ease;
+ }
+
+ .submit-btn:hover svg {
+     transform: translateX(4px);
+ }
+
+ /* Info columns divider */
+ .info-divider {
+     border-top: 1px solid #e5e7eb;
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+ }
+
+ /* Office card */
+ .office-label {
+     font-size: 0.65rem;
+     font-weight: 700;
+     letter-spacing: 0.15em;
+     text-transform: uppercase;
+     color: #9ca3af;
+     margin-bottom: 0.5rem;
+ }
+
+ .office-name {
+     font-size: 1.5rem;
+     font-weight: 400;
+     letter-spacing: -0.03em;
+     color: #0a0a0a;
+     margin-bottom: 1rem;
+ }
+
+ .office-address {
+     font-size: 0.875rem;
+     color: #6b7280;
+     line-height: 1.7;
+     margin-bottom: 1.25rem;
+ }
+
+ .office-contact-link {
+     display: block;
+     font-size: 0.875rem;
+     color: #0a0a0a;
+     font-weight: 500;
+     text-decoration: none;
+     transition: color 0.2s ease;
+     margin-bottom: 0.35rem;
+ }
+
+ .office-contact-link:hover {
+     color: #6b7280;
+ }
+
+ /* Map link pill */
+ .map-link {
+     display: inline-flex;
+     align-items: center;
+     gap: 0.4rem;
+     font-size: 0.7rem;
+     font-weight: 700;
+     letter-spacing: 0.1em;
+     text-transform: uppercase;
+     color: #6b7280;
+     text-decoration: none;
+     border: 1px solid #e5e7eb;
+     border-radius: 999px;
+     padding: 0.35rem 0.85rem;
+     transition: all 0.2s ease;
+     margin-top: 1rem;
+ }
+
+ .map-link:hover {
+     border-color: #0a0a0a;
+     color: #0a0a0a;
+ }
+
+ /* Divider lines between office cards */
+ .office-col+.office-col {
+     border-left: 1px solid #e5e7eb;
+     padding-left: 3rem;
+ }
+
+ @media (max-width: 767px) {
+     .office-col+.office-col {
+         border-left: none;
+         border-top: 1px solid #e5e7eb;
+         padding-left: 0;
+         padding-top: 2.5rem;
+         margin-top: 2.5rem;
+     }
+
+     #main-nav {
+         padding: 1.2rem 1.5rem;
+     }
+
+     .quick-contact-wrap {
+         margin-top: 2.5rem;
+     }
+ }
+
+ /* CTA strip at bottom of contact */
+ .contact-cta-strip {
+     border-top: 1px solid #e5e7eb;
+     padding: 4rem 0;
+ }
+
+ /* Footer styles */
+ main,
+ footer {
+     transition: opacity 0.5s ease;
+ }

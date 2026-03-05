@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/images/Logo/mercys logo nav bar.png" />
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Coming Soon — Mercys</title>
+    <meta name="description"
+        content="Something remarkable is on its way. Mercys is crafting something new — stay tuned." />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+
+    <!-- Tailwind CSS (locally generated) -->
+    <link href="assets/css/tailwind-generated.css" rel="stylesheet" />
+    <!-- Google Fonts: Manrope -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <style>
+        /* ── Mobile navbar override (contact.css sets 2rem 5rem) ── */
+        @media (max-width: 767px) {
+            #main-nav {
+                padding: 1.2rem 1.5rem !important;
+            }
+        }
+
+        /* ── Hero ─────────────────────────────────── */
+        .cs-hero {
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10rem 5rem 5rem;
+            border-bottom: 1px solid #e5e7eb;
+            background-color: #f9fafb;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @media (max-width: 1023px) {
+            .cs-hero {
+                padding: 9rem 3rem 4.5rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .cs-hero {
+                padding: 7.5rem 1.5rem 4rem;
+            }
+        }
+
+        /* Big decorative letter — hidden on mobile (prevents horizontal scroll) */
+        .cs-bg-letter {
+            position: absolute;
+            right: -2vw;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: clamp(14rem, 30vw, 38rem);
+            font-family: Helvena, Manrope, sans-serif;
+            font-weight: 700;
+            color: #0a0a0a;
+            opacity: 0.03;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -0.06em;
+        }
+
+        @media (max-width: 767px) {
+            .cs-bg-letter {
+                display: none;
+            }
+        }
+
+        /* Headline */
+        .cs-hero h1 {
+            font-size: clamp(2.6rem, 9vw, 8.5rem);
+            font-weight: 400;
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: #0a0a0a;
+        }
+
+        .cs-hero h1 em {
+            font-style: normal;
+            color: #9ca3af;
+        }
+
+        /* Status pill */
+        .cs-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            padding: 0.4rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cs-tag-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            flex-shrink: 0;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.7);
+            }
+        }
+
+        /* ── Notify form ─────────────────────────── */
+        .cs-notify {
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            margin-top: 2.5rem;
+            max-width: 520px;
+        }
+
+        .cs-notify input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            background: transparent;
+            font-family: Helvena, Manrope, sans-serif;
+            font-size: 0.9rem;
+            color: #0a0a0a;
+            padding: 1.1rem 0.5rem 1.1rem 0;
+            outline: none;
+        }
+
+        .cs-notify input::placeholder {
+            color: #9ca3af;
+        }
+
+        .cs-notify button {
+            flex-shrink: 0;
+            background: #0a0a0a;
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 0.7rem 1.4rem;
+            font-family: Helvena, Manrope, sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.25s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .cs-notify button:hover {
+            background: #9ca3af;
+            transform: translateY(-1px);
+        }
+
+        /* Stack vertically on small phones */
+        @media (max-width: 560px) {
+            .cs-notify {
+                flex-direction: column;
+                align-items: stretch;
+                border: 1px solid #e5e7eb;
+                border-radius: 14px;
+                padding: 0.9rem 1.1rem;
+                max-width: 100%;
+            }
+
+            .cs-notify input {
+                padding: 0.4rem 0 0.8rem;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .cs-notify button {
+                margin-top: 0.8rem;
+                width: 100%;
+                padding: 0.85rem 1rem;
+                text-align: center;
+            }
+        }
+
+        /* ── Countdown ───────────────────────────── */
+        .cs-countdown {
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(0.75rem, 3vw, 2rem);
+            flex-wrap: nowrap;
+            margin-top: 2.5rem;
+        }
+
+        .cs-count-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .cs-count-num {
+            font-size: clamp(1.7rem, 6.5vw, 4.5rem);
+            font-family: Helvena, Manrope, sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            color: #0a0a0a;
+            line-height: 1;
+            min-width: 2ch;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .cs-count-label {
+            font-size: 0.52rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-top: 0.4rem;
+        }
+
+        .cs-count-divider {
+            font-size: clamp(1.7rem, 6.5vw, 4.5rem);
+            font-family: Helvena, Manrope, sans-serif;
+            font-weight: 300;
+            color: #d1d5db;
+            line-height: 1;
+            align-self: flex-start;
+        }
+
+        /* ── Progress ────────────────────────────── */
+        .cs-progress-section {
+            padding: 4rem 5rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        @media (max-width: 1023px) {
+            .cs-progress-section {
+                padding: 4rem 3rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .cs-progress-section {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .cs-progress-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+        }
+
+        .cs-progress-bar-wrap {
+            height: 1px;
+            background: #e5e7eb;
+            overflow: hidden;
+            border-radius: 1px;
+        }
+
+        .cs-progress-bar-fill {
+            height: 100%;
+            background: #0a0a0a;
+            transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .cs-progress-pct {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-family: Helvena, Manrope, sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.04em;
+            color: #0a0a0a;
+            margin-top: 1.25rem;
+        }
+
+        .cs-progress-meta {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-top: 0.4rem;
+            font-family: Helvena, Manrope, sans-serif;
+        }
+
+        /* ── Milestones ──────────────────────────── */
+        .cs-milestones {
+            padding: 4rem 5rem;
+        }
+
+        @media (max-width: 1023px) {
+            .cs-milestones {
+                padding: 3.5rem 3rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .cs-milestones {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .cs-milestone-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.3rem 0;
+            border-top: 1px solid #e5e7eb;
+            gap: 1rem;
+        }
+
+        .cs-milestone-row:last-child {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .cs-milestone-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cs-milestone-num {
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #d1d5db;
+            width: 2ch;
+            flex-shrink: 0;
+        }
+
+        .cs-milestone-title {
+            font-size: clamp(0.85rem, 2.5vw, 1.05rem);
+            font-family: Helvena, Manrope, sans-serif;
+            font-weight: 400;
+            color: #0a0a0a;
+            letter-spacing: -0.02em;
+        }
+
+        .cs-milestone-status {
+            font-size: 0.58rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+
+        .cs-milestone-status.done {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .cs-milestone-status.active {
+            background: #fefce8;
+            color: #ca8a04;
+            border: 1px solid #fde68a;
+        }
+
+        .cs-milestone-status.upcoming {
+            background: #f9fafb;
+            color: #9ca3af;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* ── Bottom CTA ──────────────────────────── */
+        .cs-bottom-cta {
+            border-top: 1px solid #e5e7eb;
+            padding: 4rem 5rem;
+        }
+
+        @media (max-width: 1023px) {
+            .cs-bottom-cta {
+                padding: 4rem 3rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .cs-bottom-cta {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        /* ── Notify success ──────────────────────── */
+        .cs-notify.submitted input {
+            display: none;
+        }
+
+        .cs-notify.submitted .notify-thanks {
+            display: block;
+            font-family: Helvena, Manrope, sans-serif;
+            font-size: 0.9rem;
+            color: #16a34a;
+            padding: 1.1rem 0;
+        }
+
+        .notify-thanks {
+            display: none;
+        }
+
+        /* ── Reveal ──────────────────────────────── */
+        .reveal-fade-up {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-brandDark font-helvena antialiased">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 bg-white
+                   flex justify-between items-center transition-all duration-500" id="main-nav">
+        <div class="flex items-center gap-2 nav-logo-wrap">
+            <a href="index.html">
+                <img alt="Mercys Logo" class="h-6 transition-all duration-500" id="main-logo"
+                    src="assets/images/Logo/mercys logo nav bar.png" />
+            </a>
+        </div>
+        <nav
+            class="hidden md:flex items-center gap-4 text-lg font-helvena font-medium tracking-normal transition-colors nav-links">
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">What We Do</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">Work</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">We M</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="contact.html">Contact</a>
+        </nav>
+        <button class="md:hidden text-brandDark" id="mobile-menu-btn" aria-label="Toggle menu">
+          <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <svg id="icon-close" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+    </header>
+    <!-- Mobile Nav: dimmed backdrop -->
+    <div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+
+    <!-- Mobile Nav: floating card overlay -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+      <nav class="mobile-menu-nav">
+        <a href="index.html" class="mobile-nav-link">What We Do</a>
+        <a href="index.html" class="mobile-nav-link">Work</a>
+        <a href="coming-soon.html" class="mobile-nav-link">We M</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+    </div>
+
+    <main>
+
+        <!-- HERO -->
+        <section class="cs-hero">
+            <span class="cs-bg-letter" aria-hidden="true">W</span>
+
+            <div class="max-w-7xl mx-auto w-full">
+
+                <!-- Status tag -->
+                <div class="cs-tag reveal-fade-up">
+                    <span class="cs-tag-dot"></span>
+                    Work in Progress
+                </div>
+
+                <!-- Headline -->
+                <h1 class="reveal-fade-up" style="transition-delay:0.08s;">
+                    Something<br />
+                    <em>Remarkable</em><br />
+                    Is Coming.
+                </h1>
+
+                <!-- Sub copy -->
+                <p class="text-base text-gray-500 font-helvena font-normal max-w-sm leading-relaxed reveal-fade-up"
+                    style="margin-top:1.25rem; transition-delay:0.16s;">
+                    We're crafting the next version of this page with the care it deserves.
+                    Leave your email and we'll let you know the moment it's live.
+                </p>
+
+                <!-- Notify form -->
+                <div class="cs-notify reveal-fade-up" id="cs-notify-form" style="transition-delay:0.22s;">
+                    <input type="email" placeholder="Your email address" id="notify-email" autocomplete="email" />
+                    <span class="notify-thanks">✓ &nbsp;You're on the list.</span>
+                    <button type="button" onclick="handleNotify()">Notify Me</button>
+                </div>
+
+                <!-- Countdown -->
+                <div class="cs-countdown reveal-fade-up" style="transition-delay:0.3s;">
+                    <div class="cs-count-block">
+                        <span class="cs-count-num" id="cd-days">00</span>
+                        <span class="cs-count-label">Days</span>
+                    </div>
+                    <span class="cs-count-divider">:</span>
+                    <div class="cs-count-block">
+                        <span class="cs-count-num" id="cd-hours">00</span>
+                        <span class="cs-count-label">Hrs</span>
+                    </div>
+                    <span class="cs-count-divider">:</span>
+                    <div class="cs-count-block">
+                        <span class="cs-count-num" id="cd-mins">00</span>
+                        <span class="cs-count-label">Min</span>
+                    </div>
+                    <span class="cs-count-divider">:</span>
+                    <div class="cs-count-block">
+                        <span class="cs-count-num" id="cd-secs">00</span>
+                        <span class="cs-count-label">Sec</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROGRESS -->
+        <section class="cs-progress-section">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                    <div class="w-full md:w-[60%]">
+                        <p class="cs-progress-label">Build progress</p>
+                        <div class="cs-progress-bar-wrap">
+                            <div class="cs-progress-bar-fill" id="progress-fill" style="width:0%;"></div>
+                        </div>
+                        <p class="cs-progress-pct" id="progress-pct">0%</p>
+                        <p class="cs-progress-meta">Estimated completion — Q2 2026</p>
+                    </div>
+                    <p class="text-sm text-gray-400 font-helvena max-w-xs leading-relaxed md:text-right md:pb-4">
+                        We believe every detail matters. That's why we take the time to get it right before we share it
+                        with you.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MILESTONES -->
+        <section class="cs-milestones">
+            <div class="max-w-7xl mx-auto">
+
+                <p class="office-label mb-10 reveal-fade-up" style="font-size:0.68rem; text-transform:none;">What we're
+                    building</p>
+
+                <div class="cs-milestone-row reveal-fade-up">
+                    <div class="cs-milestone-left">
+                        <span class="cs-milestone-num">01</span>
+                        <span class="cs-milestone-title">Brand Strategy &amp; Identity</span>
+                    </div>
+                    <span class="cs-milestone-status done">Complete</span>
+                </div>
+
+                <div class="cs-milestone-row reveal-fade-up" style="transition-delay:0.06s;">
+                    <div class="cs-milestone-left">
+                        <span class="cs-milestone-num">02</span>
+                        <span class="cs-milestone-title">UI / UX Design System</span>
+                    </div>
+                    <span class="cs-milestone-status done">Complete</span>
+                </div>
+
+                <div class="cs-milestone-row reveal-fade-up" style="transition-delay:0.12s;">
+                    <div class="cs-milestone-left">
+                        <span class="cs-milestone-num">03</span>
+                        <span class="cs-milestone-title">Front-End Development</span>
+                    </div>
+                    <span class="cs-milestone-status active">In Progress</span>
+                </div>
+
+                <div class="cs-milestone-row reveal-fade-up" style="transition-delay:0.18s;">
+                    <div class="cs-milestone-left">
+                        <span class="cs-milestone-num">04</span>
+                        <span class="cs-milestone-title">Content &amp; Copywriting</span>
+                    </div>
+                    <span class="cs-milestone-status active">In Progress</span>
+                </div>
+
+                <div class="cs-milestone-row reveal-fade-up" style="transition-delay:0.24s;">
+                    <div class="cs-milestone-left">
+                        <span class="cs-milestone-num">05</span>
+                        <span class="cs-milestone-title">Quality Assurance &amp; Launch</span>
+                    </div>
+                    <span class="cs-milestone-status upcoming">Soon</span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BOTTOM CTA -->
+        <section class="cs-bottom-cta">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <p class="text-3xl md:text-5xl font-helvena font-regular tracking-tight leading-tight reveal-fade-up">
+                    Can't wait?<br />
+                    <span class="text-gray-400">We're always reachable.</span>
+                </p>
+                <a href="contact.html" class="submit-btn reveal-fade-up" style="text-transform:none;">
+                    Get In Touch
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brandDark text-white pt-24 pb-12 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8 pb-16">
+                <div class="md:col-span-3">
+                    <p class="text-gray-500 text-sm">2026 Mercys Global</p>
+                </div>
+                <div class="md:col-span-4">
+                    <h5 class="text-gray-400 text-xs font-helvena font-bold tracking-widest mb-8">We're here to help —
+                        reach out anytime</h5>
+                    <nav class="flex flex-col space-y-4 text-sm font-helvena font-medium">
+                        <a class="hover:text-gray-400 transition-colors" href="contact.html">Contact Us</a>
+                        <a class="hover:text-gray-400 transition-colors" href="#">Cookie Policy</a>
+                        <a class="hover:text-gray-400 transition-colors" href="#">Privacy Notice</a>
+                    </nav>
+                </div>
+                <div class="md:col-span-5 flex flex-col">
+                    <div class="flex flex-wrap gap-x-8 gap-y-4 text-xs font-helvena font-bold tracking-widest mb-16">
+                        <a class="hover:text-gray-400 transition-colors" href="https://wa.me/919656212016">WhatsApp</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.instagram.com/mercystech_/">Instagram</a>
+                        <a class="hover:text-gray-400 transition-colors" href="https://x.com/mercystech_">Twitter</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.facebook.com/mercystech">Facebook</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.linkedin.com/company/mercysglobal">Linkedin</a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-8">
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">General</p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+919656212016">+91 9656 21 2016</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Email</p>
+                            <p class="text-sm font-helvena font-medium">info@mercystech.com</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Branding
+                            </p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+917902811513">+91 7902 81 1513</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">Marketing
+                            </p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+918891814814">+91 8891 81 4814</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-12 pb-0">
+            <img alt="Mercys logo" style="width:100%; display:block; opacity:0.9; padding:3%;"
+                src="assets/images/Logo/Mercys Footer grey.png" />
+        </div>
+    </footer>
+
+    <script>
+        /* ── Navbar scroll pill ──────────────────── */
+        document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.getElementById("main-nav");
+            if (!nav) return;
+            let ticking = false;
+            window.addEventListener("scroll", () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        nav.classList.toggle("nav-scrolled", window.scrollY > 80);
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        });
+
+        /* ── Lenis smooth scroll ─────────────────── */
+        document.addEventListener("DOMContentLoaded", () => {
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                wheelMultiplier: 0.8,
+            });
+            window.__lenis = lenis;
+            lenis.on("scroll", ScrollTrigger.update);
+            gsap.ticker.add(time => lenis.raf(time * 1000));
+            gsap.ticker.lagSmoothing(0);
+        });
+
+        /* ── Reveal animations ───────────────────── */
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hero reveals immediately
+            setTimeout(() => {
+                document.querySelectorAll(".cs-hero .reveal-fade-up").forEach(el => el.classList.add("visible"));
+            }, 80);
+
+            // Remaining items on scroll
+            const io = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll(".reveal-fade-up").forEach(el => {
+                if (!el.closest(".cs-hero")) io.observe(el);
+            });
+        });
+
+        /* ── Countdown timer ─────────────────────── */
+        (function () {
+            const target = new Date();
+            target.setDate(target.getDate() + 90); // ← change to your actual launch date
+            const pad = n => String(n).padStart(2, "0");
+            function tick() {
+                const diff = Math.max(0, target - Date.now());
+                document.getElementById("cd-days").textContent = pad(Math.floor(diff / 86400000));
+                document.getElementById("cd-hours").textContent = pad(Math.floor((diff % 86400000) / 3600000));
+                document.getElementById("cd-mins").textContent = pad(Math.floor((diff % 3600000) / 60000));
+                document.getElementById("cd-secs").textContent = pad(Math.floor((diff % 60000) / 1000));
+            }
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        /* ── Progress bar ────────────────────────── */
+        document.addEventListener("DOMContentLoaded", () => {
+            const fill = document.getElementById("progress-fill");
+            const pct = document.getElementById("progress-pct");
+            const TARGET = 62; // ← update this
+
+            const io = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) {
+                    setTimeout(() => {
+                        fill.style.width = TARGET + "%";
+                        let current = 0;
+                        const step = () => {
+                            current = Math.min(current + 1, TARGET);
+                            pct.textContent = current + "%";
+                            if (current < TARGET) requestAnimationFrame(step);
+                        };
+                        requestAnimationFrame(step);
+                    }, 200);
+                    io.disconnect();
+                }
+            }, { threshold: 0.3 });
+            io.observe(document.querySelector(".cs-progress-section"));
+        });
+
+        /* ── Notify form ─────────────────────────── */
+        function handleNotify() {
+            const input = document.getElementById("notify-email");
+            const form = document.getElementById("cs-notify-form");
+            if (!input.value || !input.value.includes("@")) {
+                input.style.borderBottom = "1px solid #ef4444";
+                input.focus();
+                setTimeout(() => input.style.borderBottom = "", 1500);
+                return;
+            }
+            form.classList.add("submitted");
+        }
+    </script>
+
+    <script>
+    /* ── Mobile Menu (shared) ── */
+    document.addEventListener("DOMContentLoaded", function() {
+      var btn      = document.getElementById("mobile-menu-btn");
+      var menu     = document.getElementById("mobile-menu");
+      var backdrop = document.getElementById("mobile-backdrop");
+      var nav      = document.getElementById("main-nav");
+      var iconHam  = document.getElementById("icon-hamburger");
+      var iconX    = document.getElementById("icon-close");
+      var links    = document.querySelectorAll(".mobile-nav-link");
+      if (!btn || !menu) return;
+      var open = false;
+      function openMenu() {
+        open = true;
+        menu.classList.add("is-open");
+        if (backdrop) backdrop.classList.add("is-open");
+        if (nav) nav.classList.add("menu-open");
+        if (iconHam) iconHam.style.display = "none";
+        if (iconX)   iconX.style.display   = "block";
+        document.body.style.overflow = "hidden";
+        if (window.__lenis) window.__lenis.stop();
+        links.forEach(function(l, i) {
+          setTimeout(function() { l.classList.add("link-visible"); }, 80 + i * 65);
+        });
+      }
+      function closeMenu() {
+        open = false;
+        menu.classList.remove("is-open");
+        if (backdrop) backdrop.classList.remove("is-open");
+        if (nav) nav.classList.remove("menu-open");
+        if (iconHam) iconHam.style.display = "block";
+        if (iconX)   iconX.style.display   = "none";
+        document.body.style.overflow = "";
+        if (window.__lenis) window.__lenis.start();
+        links.forEach(function(l) { l.classList.remove("link-visible"); });
+      }
+      btn.addEventListener("click", function() { open ? closeMenu() : openMenu(); });
+      links.forEach(function(l) { l.addEventListener("click", closeMenu); });
+      if (backdrop) backdrop.addEventListener("click", closeMenu);
+    });
+    </script>
+</body>
+
+</html>

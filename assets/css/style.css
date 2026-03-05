@@ -73,76 +73,37 @@
 }
 
 @keyframes spin-slow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  .animate-spin-slow {
-    animation: spin-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-  }
-  body.loading {
-    overflow: hidden !important;
-  }
-  #preloader {
-    background-color: #ffffff;
-    opacity: 1;
-    transition: opacity 1s ease-in-out;
+  from {
+    transform: rotate(0deg);
   }
 
-  .swiper-pagination-bullet {
-    background: #fff !important;
-    opacity: 0.5;
-    width: 12px;
-    height: 12px;
+  to {
+    transform: rotate(360deg);
   }
-  .swiper-pagination-bullet-active {
-    opacity: 1;
-    background: #fff !important;
-  }
-
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Regular.ttf") format("ttf");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
 }
 
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Regular.ttf") format("ttf");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+.animate-spin-slow {
+  animation: spin-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Medium.ttf") format("ttf");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
+body.loading {
+  overflow: hidden !important;
 }
 
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Semibold.ttf") format("ttf");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
+#preloader {
+  background-color: #ffffff;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Bold.ttf") format("ttf");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+.swiper-pagination-bullet {
+  background: #fff !important;
+  opacity: 0.5;
+  width: 12px;
+  height: 12px;
 }
 
-@font-face {
-  font-family: "Helvena";
-  src: url("/assets/fonts/helvana/TTF/Helvena-Black.ttf") format("ttf");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #fff !important;
 }

@@ -1,0 +1,583 @@
+ /* =========================================================
+   🧈 LENIS SMOOTH SCROLL BASE
+========================================================= */
+
+ html.lenis,
+ html.lenis body {
+     height: auto;
+ }
+
+ .lenis.lenis-smooth {
+     scroll-behavior: auto !important;
+ }
+
+ .lenis.lenis-smooth [data-lenis-prevent] {
+     overscroll-behavior: contain;
+ }
+
+ .lenis.lenis-stopped {
+     overflow: hidden;
+ }
+
+ /* =========================================================
+   ✨ REVEAL ANIMATION BASE STATES
+========================================================= */
+
+ .reveal-up {
+     opacity: 0;
+     transform: translateY(60px);
+     transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+         transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-up.revealed {
+     opacity: 1;
+     transform: translateY(0);
+ }
+
+ .reveal-fade {
+     opacity: 0;
+     transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-fade.revealed {
+     opacity: 1;
+ }
+
+ .reveal-scale {
+     opacity: 0;
+     transform: scale(0.95);
+     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+         transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-scale.revealed {
+     opacity: 1;
+     transform: scale(1);
+ }
+
+ /* Staggered children */
+ .reveal-stagger>* {
+     opacity: 0;
+     transform: translateY(40px);
+     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+         transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+ }
+
+ .reveal-stagger.revealed>* {
+     opacity: 1;
+     transform: translateY(0);
+ }
+
+ .reveal-stagger.revealed>*:nth-child(1) {
+     transition-delay: 0s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(2) {
+     transition-delay: 0.1s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(3) {
+     transition-delay: 0.15s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(4) {
+     transition-delay: 0.2s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(5) {
+     transition-delay: 0.25s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(6) {
+     transition-delay: 0.3s;
+ }
+
+ .reveal-stagger.revealed>*:nth-child(7) {
+     transition-delay: 0.35s;
+ }
+
+ /* =========================================================
+   🔥 MAIN NAVBAR – BASE STATE (Wolff Olins Style)
+========================================================= */
+
+ #main-nav {
+     position: fixed;
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     width: 100%;
+
+     padding: 2rem 5rem;
+     background: #ffffff;
+     border-radius: 0;
+     border: 1px solid transparent;
+
+     will-change: width, border-radius, padding, background, top;
+     transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ /* Logo default — Wolff Olins style: 24px */
+ #main-logo {
+     height: 24px;
+     transition: height 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ /* Mobile sequence mask height */
+ #sequence-text-wrapper-mobile {
+     height: 50px;
+     width: 200px;
+ }
+
+
+ /* Mobile sticky section — always visible text */
+ @media (max-width: 767px) {
+     #dark-section .flex.md\\:hidden {
+         color: inherit;
+     }
+
+     /* Force words visible regardless of dark/light state */
+     #sequence-text-wrapper-mobile .sequence-word-mobile {
+         color: currentColor;
+     }
+ }
+
+
+ /* Hide ALL sticky text when background is white (not dark-active) */
+ #dark-section:not(.dark-active) #sequence-pin-panel {
+     opacity: 0;
+     pointer-events: none;
+ }
+
+ /* Show when dark */
+ #dark-section.dark-active #sequence-pin-panel {
+     opacity: 1;
+     pointer-events: auto;
+ }
+
+ /* Smooth transition */
+ #sequence-pin-panel {
+     transition: opacity 0.4s ease;
+ }
+
+ /* =========================================================
+   💎 WOLFF OLINS PILL – SCROLLED STATE (Never Hides)
+========================================================= */
+
+ .nav-scrolled {
+     top: 1.25rem;
+
+     width: 65%;
+     max-width: 860px;
+
+     padding: 0.65rem 2rem;
+
+     border-radius: 999px !important;
+     /* full pill like Wolff Olins */
+
+     background: rgba(255, 255, 255, 0.82);
+     backdrop-filter: blur(20px) saturate(180%);
+     -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+     border: 1px solid rgba(255, 255, 255, 0.5);
+     box-shadow:
+         0 4px 24px rgba(0, 0, 0, 0.06),
+         0 1px 3px rgba(0, 0, 0, 0.04);
+ }
+
+ .nav-scrolled #main-logo {
+     padding-top: 5px;
+     height: 26px;
+ }
+
+ /* Logo & nav margins — only in normal state (Wolff Olins: ~48px total) */
+ .nav-logo-wrap {
+     margin-left: 0;
+     transition: margin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .nav-links {
+     margin-right: 0;
+     transition: margin 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+
+ .nav-scrolled .nav-logo-wrap {
+     margin-left: 0;
+ }
+
+ .nav-scrolled .nav-links {
+     margin-right: 0;
+ }
+
+ /* =========================================================
+   🌑 DARK LIQUID GLASS – FOR DARK SECTIONS
+========================================================= */
+
+ .nav-dark-glass {
+     background: rgba(62, 61, 61, 0.6) !important;
+     backdrop-filter: blur(24px) saturate(180%) !important;
+     -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+
+     border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+     box-shadow: 0 2px 10px rgba(114, 114, 114, 0.4);
+ }
+
+ .nav-dark-glass a,
+ .nav-dark-glass #mobile-menu-btn {
+     color: #ffffff !important;
+ }
+
+ .logo-invert {
+     filter: invert(1) brightness(10);
+ }
+
+ #wrapper {
+     will-change: transform;
+ }
+
+
+ #happy-spotlights {
+     transition: opacity 0.3s ease, transform 0.3s ease;
+     will-change: opacity, transform;
+ }
+
+ /* =========================================================
+   🔄 SPIN ANIMATION
+========================================================= */
+
+ @keyframes spin-slow {
+     from {
+         transform: rotate(0deg);
+     }
+
+     to {
+         transform: rotate(360deg);
+     }
+ }
+
+ .animate-spin-slow {
+     animation: spin-slow 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+ }
+
+
+ /* =========================================================
+   � SKELETON LOADER — Instagram/Facebook Style
+========================================================= */
+
+ body.skeleton-loading {
+     overflow: hidden !important;
+ }
+
+ /* Hide real content initially */
+ body.skeleton-loading main,
+ body.skeleton-loading footer {
+     opacity: 0;
+ }
+
+ /* Reveal real content */
+ main,
+ footer {
+     transition: opacity 0.5s ease;
+ }
+
+ /* Shimmer animation */
+ @keyframes shimmer {
+     0% {
+         background-position: -400px 0;
+     }
+
+     100% {
+         background-position: 400px 0;
+     }
+ }
+
+ .skeleton {
+     background: linear-gradient(90deg,
+             #f0f0f0 25%,
+             #e0e0e0 37%,
+             #f0f0f0 63%);
+     background-size: 800px 100%;
+     animation: shimmer 1.4s ease-in-out infinite;
+     border-radius: 6px;
+ }
+
+ .skeleton-circle {
+     background: linear-gradient(90deg,
+             #f0f0f0 25%,
+             #e0e0e0 37%,
+             #f0f0f0 63%);
+     background-size: 800px 100%;
+     animation: shimmer 1.4s ease-in-out infinite;
+     border-radius: 50%;
+ }
+
+ .skeleton-screen {
+     position: fixed;
+     inset: 0;
+     z-index: 90;
+     background: #fff;
+     transition: opacity 0.4s ease, visibility 0.4s ease;
+ }
+
+ .skeleton-screen.hidden {
+     opacity: 0;
+     visibility: hidden;
+     pointer-events: none;
+ }
+
+
+ /* =========================================================
+   🎨 HERO & LAYOUT STYLES
+========================================================= */
+
+ .hero-gradient-text {
+     background: linear-gradient(to right, #ffffff, #cccccc);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ .cta-gradient {
+     background: linear-gradient(135deg, #468fe2 0%, #4d69e5 50%, #004bc3 100%);
+ }
+
+ /* Grey hover — missing from generated Tailwind CSS */
+ .hover\:text-gray-400:hover {
+     --tw-text-opacity: 1;
+     color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+ }
+
+ .group:hover .group-hover\:text-gray-400 {
+     --tw-text-opacity: 1;
+     color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+ }
+
+ .footer-huge-text {
+     font-size: 20vw;
+     line-height: 0.8;
+     letter-spacing: -0.05em;
+     opacity: 0.1;
+ }
+
+ .play-button-hover:hover .play-icon {
+     transform: scale(1.1);
+ }
+
+ .dark-active {
+     background-color: #000 !important;
+     color: #fff !important;
+ }
+
+ #sequence-text-wrapper {
+     will-change: transform;
+ }
+
+ /* =========================================================
+   🎞 Sticky scroll section
+========================================================= */
+
+ .sequence-word {
+     display: block;
+     margin: 0;
+     padding: 0;
+     will-change: transform;
+     line-height: 50px;
+ }
+
+ .sequence-mask {
+     height: 50px;
+     overflow: hidden;
+ }
+
+ @media (min-width: 768px) {
+     .sequence-word {
+         line-height: 120px;
+     }
+
+     .sequence-mask {
+         height: 120px;
+     }
+
+     .desktop-pad {
+         padding-left: 4rem;
+     }
+ }
+
+
+
+
+ /* =========================================================
+   🎞 SWIPER CUSTOMIZATION
+========================================================= */
+
+ .swiper-pagination-bullet {
+     background: #fff !important;
+     opacity: 0.5;
+     width: 12px;
+     height: 12px;
+     transition: opacity 0.45s ease;
+ }
+
+ .swiper-pagination-bullet-active {
+     opacity: 1;
+     background: #fff !important;
+ }
+
+ .core-framework-card {
+     background: #ffffff;
+     border: 1px solid #f1f1f1;
+ }
+
+/* =========================================================
+   📱 MOBILE MENU — Wolff Olins floating card style
+========================================================= */
+
+/* Dimmed background overlay behind the card */
+.mobile-menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 44;
+    background: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-backdrop {
+        display: block;
+    }
+}
+
+.mobile-menu-backdrop.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Floating card — sits over the dimmed backdrop */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    z-index: 45;
+
+    /* Liquid glass */
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 1.2rem 1.8rem;
+    border-radius: 20px;
+
+    /* Slide-down animation */
+    transform: translateY(-105%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.4s ease;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu-overlay {
+        display: flex;
+    }
+}
+
+.mobile-menu-overlay.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Fake navbar row inside the card (logo + close btn spacing) */
+.mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    /* space for the real navbar sitting on top (z-50) */
+    padding-top: 4.5rem;
+}
+
+.mobile-nav-link {
+    display: block;
+    font-size: 1.55rem;
+    font-family: inherit;
+    font-weight: 400;
+    color: #555;
+    padding: 0.65rem 0;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+}
+
+.mobile-nav-link:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-link.link-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-link:hover {
+    color: #111;
+}
+
+/* When menu is open — style the navbar to match the card */
+#main-nav.menu-open {
+    top: 10px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    transform: none;
+    border-radius: 20px 20px 0 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: none;
+}
+
+ #icon-close {
+     display: none;
+ }
+
+ #mobile-menu-btn {
+     position: relative;
+     z-index: 50;
+ }
+/* =========================================================
+   🖐 HERO SWIPER — hide arrows on mobile, swipe-only
+========================================================= */
+@media (max-width: 767px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   🎬 SHOWREEL — cursor-follow image
+========================================================= */
+.showreel-cursor-img {
+    position: absolute;
+    width: 340px;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    z-index: 10;
+    will-change: transform;
+    filter: drop-shadow(0 6px 32px rgba(0,0,0,0.30));
+    pointer-events: none;
+}

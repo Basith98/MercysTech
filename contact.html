@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="assets/images/Logo/mercys logo nav bar.png" />
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Contact — Mercys</title>
+    <meta name="description"
+        content="Get in touch with Mercys. We'd love to hear about your project and discuss how we can help your brand grow." />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+
+    <!-- Tailwind CSS (locally generated) -->
+    <link href="assets/css/tailwind-generated.css" rel="stylesheet" />
+    <!-- Google Fonts: Manrope -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+
+</head>
+
+<body class="bg-white text-brandDark font-helvena antialiased">
+
+    <!-- ======================================================
+       NAVBAR — exact copy from main site
+  ====================================================== -->
+    <header class="fixed top-0 left-1/2 -translate-x-1/2
+         w-full
+         z-50 bg-white
+         flex justify-between items-center
+         transition-all duration-500" id="main-nav">
+        <!-- Logo -->
+        <div class="flex items-center gap-2 nav-logo-wrap">
+            <a href="index.html">
+                <img alt="Mercys Logo" class="h-6 transition-all duration-500" id="main-logo"
+                    src="assets/images/Logo/mercys logo nav bar.png" />
+            </a>
+        </div>
+        <!-- Desktop Nav -->
+        <nav
+            class="hidden md:flex items-center gap-4 text-lg font-helvena font-medium tracking-normal transition-colors nav-links">
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">What We Do</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">Work</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2" href="#">We M</a>
+            <a class="text-gray-600 hover:text-black transition-colors px-2 font-semibold text-black"
+                href="#">Contact</a>
+        </nav>
+        <!-- Mobile Menu Icon -->
+        <button class="md:hidden text-brandDark" id="mobile-menu-btn" aria-label="Toggle menu">
+          <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <svg id="icon-close" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </button>
+    </header>
+    <!-- Mobile Nav: dimmed backdrop -->
+    <div id="mobile-backdrop" class="mobile-menu-backdrop"></div>
+
+    <!-- Mobile Nav: floating card overlay -->
+    <div id="mobile-menu" class="mobile-menu-overlay">
+      <nav class="mobile-menu-nav">
+        <a href="index.html" class="mobile-nav-link">What We Do</a>
+        <a href="index.html" class="mobile-nav-link">Work</a>
+        <a href="coming-soon.html" class="mobile-nav-link">We M</a>
+        <a href="contact.html" class="mobile-nav-link">Contact</a>
+      </nav>
+    </div>
+
+    <main>
+
+        <!-- ======================================================
+         HERO — large editorial headline
+    ====================================================== -->
+        <section class="contact-hero px-6 md:px-12 lg:px-20">
+            <div class="max-w-7xl mx-auto">
+                <p class="text-xs font-helvena font-bold tracking-widest text-gray-400 mb-8">Contact</p>
+                <h1 class="reveal-up">
+                    Let's Build<br />Something<br />Great Together.
+                </h1>
+                <p class="reveal-up text-base md:text-lg text-gray-500 font-helvena font-normal max-w-lg leading-relaxed"
+                    style="margin-top: 1.2rem; transition-delay:0.1s;">
+                    Tell us about your project, your goals, or just say hello. We're always open to a conversation over
+                    tea.
+                </p>
+            </div>
+        </section>
+
+        <!-- ======================================================
+         ENQUIRY FORM + SIDEBAR
+    ====================================================== -->
+        <section class="px-6 md:px-12 lg:px-20 py-20 md:py-32">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-16 md:gap-24">
+
+                    <!-- LEFT — Form -->
+                    <div class="md:w-[58%] reveal-up">
+
+                        <!-- Tabs -->
+                        <div class="enquiry-tabs mb-12">
+
+                            <button class="enquiry-tab" onclick="selectTab(this)">General Enquiry</button>
+                        </div>
+
+                        <!-- Form -->
+                        <form onsubmit="return false;" class="flex flex-col gap-2">
+                            <div class="flex flex-col md:flex-row gap-0 md:gap-8">
+                                <div class="flex-1">
+                                    <input type="text" placeholder="Full Name *" class="form-field" required />
+                                </div>
+                                <div class="flex-1">
+                                    <input type="email" placeholder="Email Address *" class="form-field" required />
+                                </div>
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-0 md:gap-8">
+                                <div class="flex-1">
+                                    <input type="text" placeholder="Company / Brand" class="form-field" />
+                                </div>
+                                <div class="flex-1">
+                                    <input type="tel" placeholder="Phone Number" class="form-field" />
+                                </div>
+                            </div>
+                            <div>
+                                <input type="text" placeholder="Subject" class="form-field" />
+                            </div>
+                            <div>
+                                <textarea placeholder="Tell us about your project..."
+                                    class="form-field mt-4"></textarea>
+                            </div>
+
+
+                            <!-- Privacy + Submit -->
+                            <div
+                                class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-10 pt-8 ">
+                                <p class="text-xs text-gray-400 font-helvena font-normal max-w-xs leading-relaxed">
+                                    By submitting, you agree to our
+                                    <a href="#" class="underline hover:text-gray-700 transition-colors">privacy
+                                        policy</a>.
+                                    We'll never share your data.
+                                </p>
+                                <button type="submit" class="submit-btn" style="text-transform: none;">
+                                    Send Message
+                                    <svg width=" 16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- RIGHT — Contact details sidebar -->
+                    <div class="md:w-[42%] reveal-up" style="transition-delay:0.12s;">
+                        <div class="sticky top-40">
+
+                            <!-- Quick contact -->
+                            <div class="mb-12 quick-contact-wrap" style="padding-right: 1.5rem;">
+                                <p class="office-label mb-6" style="text-transform: none;">Direct Lines</p>
+                                <div class="flex flex-col gap-5">
+                                    <div>
+                                        <p class="text-xs text-gray-400 tracking-widest font-bold mb-1">
+                                            General</p>
+                                        <a href="tel:+919656212016"
+                                            class="text-xl font-helvena font-regular tracking-tight hover:text-gray-500 transition-colors">+91
+                                            9656 21 2016</a>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400 tracking-widest font-bold mb-1">
+                                            Branding</p>
+                                        <a href="tel:+917902811513"
+                                            class="text-xl font-helvena font-regular tracking-tight hover:text-gray-500 transition-colors">+91
+                                            7902 81 1513</a>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400 tracking-widest font-bold mb-1">
+                                            Marketing</p>
+                                        <a href="tel:+918891814814"
+                                            class="text-xl font-helvena font-regular tracking-tight hover:text-gray-500 transition-colors">+91
+                                            8891 81 4814</a>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-gray-400 tracking-widest font-bold mb-1">Email
+                                        </p>
+                                        <a href="mailto:info@mercystech.com"
+                                            class="text-xl font-helvena font-regular tracking-tight hover:text-gray-500 transition-colors">info@mercystech.com</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social links -->
+                            <div class="border-t border-gray-100 pt-8">
+                                <p class="office-label mb-5" style="text-transform: none;">Follow Along</p>
+                                <div class="flex flex-wrap gap-x-6 gap-y-3 text-xs font-bold tracking-widest">
+                                    <a href="https://wa.me/919656212016"
+                                        class="text-gray-500 hover\:text-gray-400 transition-colors">WhatsApp</a>
+                                    <a href="https://www.instagram.com/mercystech_/"
+                                        class="text-gray-500 hover\:text-gray-400 transition-colors">Instagram</a>
+                                    <a href="https://x.com/mercystech_"
+                                        class="text-gray-500 hover\:text-gray-400 transition-colors">Twitter</a>
+                                    <a href="https://www.facebook.com/mercystech"
+                                        class="text-gray-500 hover\:text-gray-400 transition-colors">Facebook</a>
+                                    <a href="https://www.linkedin.com/company/mercysglobal"
+                                        class="text-gray-500 hover\:text-gray-400 transition-colors">LinkedIn</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+         OFFICE LOCATIONS
+    ====================================================== -->
+        <section class="px-6 md:px-12 lg:px-20 info-divider" style="background-color:#f3f4f6;">
+            <div class="max-w-7xl mx-auto">
+                <h3
+                    class="text-5xl font-helvena font-regular border-b border-gray-200 pb-10 mb-16 tracking-tight reveal-up">
+                    Our Locations
+                </h3>
+                <div class="flex flex-col md:flex-row gap-0 reveal-stagger">
+
+                    <!-- Office 1 -->
+                    <div class="office-col flex-1 pr-0 md:pr-12">
+                        <p class="office-label">01 — India</p>
+                        <h4 class="office-name">Alappuzha &amp; Kochi</h4>
+                        <p class="office-address">
+                            Mercys Global,<br />
+                            Alappuzha, Kerala — 688501,<br />
+                            India.
+                        </p>
+                        <a href="tel:+919656212016" class="office-contact-link">+91 9656 21 2016</a>
+                        <a href="mailto:info@mercystech.com" class="office-contact-link">info@mercystech.com</a>
+                        <a href="https://maps.google.com" target="_blank" class="map-link">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                <circle cx="12" cy="9" r="2.5" />
+                            </svg>
+                            Open in Maps
+                        </a>
+                    </div>
+
+                    <!-- Office 2 -->
+                    <div class="office-col flex-1 md:px-12">
+                        <p class="office-label">02 — UAE</p>
+                        <h4 class="office-name">Dubai</h4>
+                        <p class="office-address">
+                            Mercys Global,<br />
+                            Business Bay,<br />
+                            Dubai, UAE.
+                        </p>
+                        <a href="tel:+919656212016" class="office-contact-link">+91 9656 21 2016</a>
+                        <a href="mailto:info@mercystech.com" class="office-contact-link">info@mercystech.com</a>
+                        <a href="https://maps.google.com" target="_blank" class="map-link">
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                                <circle cx="12" cy="9" r="2.5" />
+                            </svg>
+                            Open in Maps
+                        </a>
+                    </div>
+
+                    <!-- Office 3 -->
+                    <div class="office-col flex-1 md:pl-12">
+                        <p class="office-label">03 — Global</p>
+                        <h4 class="office-name">Remote &amp; Worldwide</h4>
+                        <p class="office-address">
+                            We collaborate with clients<br />
+                            across the globe — wherever<br />
+                            great brands are built.
+                        </p>
+                        <a href="mailto:info@mercystech.com" class="office-contact-link">info@mercystech.com</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================
+         BOTTOM CTA STRIP
+    ====================================================== -->
+        <section class="px-6 md:px-12 lg:px-20 contact-cta-strip">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <p class="text-3xl md:text-5xl font-helvena font-regular tracking-tight leading-tight reveal-up">
+                    Ready to start?<br />
+                    <span class="text-gray-400">We're one message away.</span>
+                </p>
+                <a href="mailto:info@mercystech.com" class="submit-btn" style="text-transform: none;">
+                    Email Us Directly
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======================================================
+       FOOTER — exact copy from main site
+  ====================================================== -->
+    <footer class="bg-brandDark text-white pt-24 pb-12 overflow-hidden" data-purpose="footer">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8 pb-16">
+                <!-- Left Section -->
+                <div class="md:col-span-3">
+                    <p class="text-gray-500 text-sm">2026 Mercys Global</p>
+                </div>
+                <!-- Middle Section -->
+                <div class="md:col-span-4">
+                    <h5 class="text-gray-400 text-xs font-helvena font-bold tracking-widest mb-8">We're here
+                        to help —
+                        reach out anytime</h5>
+                    <nav class="flex flex-col space-y-4 text-sm font-helvena font-medium">
+                        <a class="hover:text-gray-400 transition-colors" href="contact.html">Contact Us</a>
+                        <a class="hover:text-gray-400 transition-colors" href="#">Cookie Policy</a>
+                        <a class="hover:text-gray-400 transition-colors" href="#">Privacy Notice</a>
+                    </nav>
+                </div>
+                <!-- Right Section -->
+                <div class="md:col-span-5 flex flex-col">
+                    <!-- Social Links -->
+                    <div class="flex flex-wrap gap-x-8 gap-y-4 text-xs font-helvena font-bold tracking-widest mb-16">
+                        <a class="hover:text-gray-400 transition-colors" href="https://wa.me/919656212016">WhatsApp</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.instagram.com/mercystech_/">Instagram</a>
+                        <a class="hover:text-gray-400 transition-colors" href="https://x.com/mercystech_">Twitter</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.facebook.com/mercystech">Facebook</a>
+                        <a class="hover:text-gray-400 transition-colors"
+                            href="https://www.linkedin.com/company/mercysglobal">Linkedin</a>
+                    </div>
+                    <!-- Contact Grid -->
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-8">
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">
+                                General</p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+919656212016">+91 9656 21 2016</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">
+                                Email</p>
+                            <p class="text-sm font-helvena font-medium">info@mercystech.com</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">
+                                Branding</p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+917902811513">+91 7902 81 1513</a>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-[10px] font-helvena font-bold tracking-widest mb-2">
+                                Marketing</p>
+                            <p class="text-sm font-helvena font-medium"><a href="tel:+918891814814">+91 8891 81 4814</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-12 pb-0">
+            <img alt="Mercys logo" style="width:100%; display:block; opacity:0.9; padding: 3%;"
+                src="assets/images/Logo/Mercys Footer grey.png" />
+        </div>
+    </footer>
+
+    <script src="assets/js/contact.js"></script>
+
+
+    <script>
+    /* ── Mobile Menu (shared) ── */
+    document.addEventListener("DOMContentLoaded", function() {
+      var btn      = document.getElementById("mobile-menu-btn");
+      var menu     = document.getElementById("mobile-menu");
+      var backdrop = document.getElementById("mobile-backdrop");
+      var nav      = document.getElementById("main-nav");
+      var iconHam  = document.getElementById("icon-hamburger");
+      var iconX    = document.getElementById("icon-close");
+      var links    = document.querySelectorAll(".mobile-nav-link");
+      if (!btn || !menu) return;
+      var open = false;
+      function openMenu() {
+        open = true;
+        menu.classList.add("is-open");
+        if (backdrop) backdrop.classList.add("is-open");
+        if (nav) nav.classList.add("menu-open");
+        if (iconHam) iconHam.style.display = "none";
+        if (iconX)   iconX.style.display   = "block";
+        document.body.style.overflow = "hidden";
+        if (window.__lenis) window.__lenis.stop();
+        links.forEach(function(l, i) {
+          setTimeout(function() { l.classList.add("link-visible"); }, 80 + i * 65);
+        });
+      }
+      function closeMenu() {
+        open = false;
+        menu.classList.remove("is-open");
+        if (backdrop) backdrop.classList.remove("is-open");
+        if (nav) nav.classList.remove("menu-open");
+        if (iconHam) iconHam.style.display = "block";
+        if (iconX)   iconX.style.display   = "none";
+        document.body.style.overflow = "";
+        if (window.__lenis) window.__lenis.start();
+        links.forEach(function(l) { l.classList.remove("link-visible"); });
+      }
+      btn.addEventListener("click", function() { open ? closeMenu() : openMenu(); });
+      links.forEach(function(l) { l.addEventListener("click", closeMenu); });
+      if (backdrop) backdrop.addEventListener("click", closeMenu);
+    });
+    </script>
+</body>
+
+</html>
