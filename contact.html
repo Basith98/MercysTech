@@ -4,7 +4,8 @@
 
 <head>
     <meta charset="utf-8" />
-  <link rel="icon" type="image/png" href="assets/images/Logo/mercys logo nav bar.png" />
+    <script src="assets/js/dark-mode.js"></script>
+    <link rel="icon" type="image/png" href="assets/images/Logo/mercys tech icon-01.ico" />
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Contact — Mercys</title>
@@ -57,14 +58,15 @@
             <a class="text-gray-600 hover:text-black transition-colors px-2 font-semibold text-black"
                 href="#">Contact</a>
         </nav>
+        <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
         <!-- Mobile Menu Icon -->
         <button class="md:hidden text-brandDark" id="mobile-menu-btn" aria-label="Toggle menu">
-          <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-          </svg>
-          <svg id="icon-close" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-          </svg>
+            <svg id="icon-hamburger" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+            <svg id="icon-close" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
         </button>
     </header>
     <!-- Mobile Nav: dimmed backdrop -->
@@ -72,12 +74,12 @@
 
     <!-- Mobile Nav: floating card overlay -->
     <div id="mobile-menu" class="mobile-menu-overlay">
-      <nav class="mobile-menu-nav">
-        <a href="index.html" class="mobile-nav-link">What We Do</a>
-        <a href="index.html" class="mobile-nav-link">Work</a>
-        <a href="coming-soon.html" class="mobile-nav-link">We M</a>
-        <a href="contact.html" class="mobile-nav-link">Contact</a>
-      </nav>
+        <nav class="mobile-menu-nav">
+            <a href="index.html" class="mobile-nav-link">What We Do</a>
+            <a href="index.html" class="mobile-nav-link">Work</a>
+            <a href="coming-soon.html" class="mobile-nav-link">We M</a>
+            <a href="contact.html" class="mobile-nav-link">Contact</a>
+        </nav>
     </div>
 
     <main>
@@ -387,45 +389,45 @@
 
 
     <script>
-    /* ── Mobile Menu (shared) ── */
-    document.addEventListener("DOMContentLoaded", function() {
-      var btn      = document.getElementById("mobile-menu-btn");
-      var menu     = document.getElementById("mobile-menu");
-      var backdrop = document.getElementById("mobile-backdrop");
-      var nav      = document.getElementById("main-nav");
-      var iconHam  = document.getElementById("icon-hamburger");
-      var iconX    = document.getElementById("icon-close");
-      var links    = document.querySelectorAll(".mobile-nav-link");
-      if (!btn || !menu) return;
-      var open = false;
-      function openMenu() {
-        open = true;
-        menu.classList.add("is-open");
-        if (backdrop) backdrop.classList.add("is-open");
-        if (nav) nav.classList.add("menu-open");
-        if (iconHam) iconHam.style.display = "none";
-        if (iconX)   iconX.style.display   = "block";
-        document.body.style.overflow = "hidden";
-        if (window.__lenis) window.__lenis.stop();
-        links.forEach(function(l, i) {
-          setTimeout(function() { l.classList.add("link-visible"); }, 80 + i * 65);
+        /* ── Mobile Menu (shared) ── */
+        document.addEventListener("DOMContentLoaded", function () {
+            var btn = document.getElementById("mobile-menu-btn");
+            var menu = document.getElementById("mobile-menu");
+            var backdrop = document.getElementById("mobile-backdrop");
+            var nav = document.getElementById("main-nav");
+            var iconHam = document.getElementById("icon-hamburger");
+            var iconX = document.getElementById("icon-close");
+            var links = document.querySelectorAll(".mobile-nav-link");
+            if (!btn || !menu) return;
+            var open = false;
+            function openMenu() {
+                open = true;
+                menu.classList.add("is-open");
+                if (backdrop) backdrop.classList.add("is-open");
+                if (nav) nav.classList.add("menu-open");
+                if (iconHam) iconHam.style.display = "none";
+                if (iconX) iconX.style.display = "block";
+                document.body.style.overflow = "hidden";
+                if (window.__lenis) window.__lenis.stop();
+                links.forEach(function (l, i) {
+                    setTimeout(function () { l.classList.add("link-visible"); }, 80 + i * 65);
+                });
+            }
+            function closeMenu() {
+                open = false;
+                menu.classList.remove("is-open");
+                if (backdrop) backdrop.classList.remove("is-open");
+                if (nav) nav.classList.remove("menu-open");
+                if (iconHam) iconHam.style.display = "block";
+                if (iconX) iconX.style.display = "none";
+                document.body.style.overflow = "";
+                if (window.__lenis) window.__lenis.start();
+                links.forEach(function (l) { l.classList.remove("link-visible"); });
+            }
+            btn.addEventListener("click", function () { open ? closeMenu() : openMenu(); });
+            links.forEach(function (l) { l.addEventListener("click", closeMenu); });
+            if (backdrop) backdrop.addEventListener("click", closeMenu);
         });
-      }
-      function closeMenu() {
-        open = false;
-        menu.classList.remove("is-open");
-        if (backdrop) backdrop.classList.remove("is-open");
-        if (nav) nav.classList.remove("menu-open");
-        if (iconHam) iconHam.style.display = "block";
-        if (iconX)   iconX.style.display   = "none";
-        document.body.style.overflow = "";
-        if (window.__lenis) window.__lenis.start();
-        links.forEach(function(l) { l.classList.remove("link-visible"); });
-      }
-      btn.addEventListener("click", function() { open ? closeMenu() : openMenu(); });
-      links.forEach(function(l) { l.addEventListener("click", closeMenu); });
-      if (backdrop) backdrop.addEventListener("click", closeMenu);
-    });
     </script>
 </body>
 

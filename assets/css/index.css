@@ -581,3 +581,174 @@
     filter: drop-shadow(0 6px 32px rgba(0,0,0,0.30));
     pointer-events: none;
 }
+
+/* =========================================================
+   🌙 DARK MODE — html.dark class-based theming
+========================================================= */
+
+/* ── Base ─────────────────────────────────────────────── */
+html.dark body {
+    background-color: #0d0d0d;
+    color: #e8e8e8;
+}
+
+/* ── Navbar ───────────────────────────────────────────── */
+html.dark #main-nav {
+    background: #0d0d0d;
+}
+
+html.dark .nav-scrolled {
+    background: rgba(15, 15, 15, 0.85) !important;
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+html.dark .nav-dark-glass {
+    background: rgba(0,0,0,0.75) !important;
+}
+
+/* Logo — dark mode uses white version via invert */
+html.dark #main-logo {
+    filter: invert(1) brightness(10);
+}
+
+/* Nav links */
+html.dark .nav-links a,
+html.dark header nav a {
+    color: #bbb !important;
+}
+
+html.dark .nav-links a:hover,
+html.dark header nav a:hover {
+    color: #fff !important;
+}
+
+html.dark #mobile-menu-btn {
+    color: #e8e8e8;
+}
+
+/* ── Sections & backgrounds ───────────────────────────── */
+html.dark section,
+html.dark .bg-white {
+    background-color: #0d0d0d !important;
+}
+
+html.dark .bg-gray-50\/80,
+html.dark [class*="bg-gray-50"] {
+    background-color: #141414 !important;
+}
+
+/* Core Framework cards */
+html.dark .group.rounded-2xl {
+    background: #1a1a1a !important;
+    border-color: #2a2a2a !important;
+}
+
+/* Section headings with borders */
+html.dark h3.border-b,
+html.dark h3.border-t {
+    border-color: #2a2a2a !important;
+    background-color: #0d0d0d !important;
+}
+
+html.dark #happy-spotlights h3 {
+    background-color: #0d0d0d !important;
+}
+
+/* ── Sticky scroll section (inverted: white bg in dark mode) ── */
+html.dark #dark-section.dark-active {
+    background-color: #ffffff !important;
+    color: #0a0a0a !important;
+}
+
+html.dark #dark-section.dark-active #sequence-pin-panel,
+html.dark #dark-section.dark-active .sequence-word,
+html.dark #dark-section.dark-active .sequence-word-mobile,
+html.dark #dark-section.dark-active p,
+html.dark #dark-section.dark-active span {
+    color: #0a0a0a !important;
+}
+
+html.dark #dark-section.dark-active #main-nav {
+    background: rgba(255,255,255,0.85) !important;
+}
+
+/* ── Text colours ─────────────────────────────────────── */
+html.dark .text-gray-600 { color: #999 !important; }
+html.dark .text-gray-500 { color: #888 !important; }
+html.dark .text-gray-400 { color: #666 !important; }
+html.dark .text-brandDark { color: #e8e8e8 !important; }
+html.dark h1, html.dark h2, html.dark h4 { color: #e8e8e8; }
+
+/* ── Mobile menu overlay ──────────────────────────────── */
+html.dark .mobile-menu-overlay {
+    background: rgba(15, 15, 15, 0.82) !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+html.dark .mobile-nav-link {
+    color: #aaa !important;
+}
+
+html.dark .mobile-nav-link:hover {
+    color: #fff !important;
+}
+
+html.dark .mobile-menu-backdrop {
+    background: rgba(0,0,0,0.5) !important;
+}
+
+/* ── Footer (already dark — minor accent tweaks) ──────── */
+html.dark footer {
+    background-color: #050505 !important;
+}
+
+/* ── Contact & coming-soon page specifics ─────────────── */
+html.dark .contact-hero,
+html.dark [style*="background-color:#f3f4f6"],
+html.dark [style*="background-color: #f3f4f6"] {
+    background-color: #141414 !important;
+}
+
+html.dark .form-field {
+    background: #1a1a1a;
+    color: #e8e8e8;
+    border-color: #333;
+}
+
+html.dark .form-field::placeholder {
+    color: #666;
+}
+
+html.dark .cs-hero {
+    background-color: #0d0d0d !important;
+}
+
+html.dark .cs-milestone-row {
+    border-color: #2a2a2a !important;
+}
+
+html.dark .cs-milestone-title { color: #e8e8e8; }
+
+html.dark .cs-count-num { color: #e8e8e8; }
+
+html.dark .cs-bottom-cta,
+html.dark .cs-progress-section,
+html.dark .cs-milestones {
+    border-color: #2a2a2a !important;
+}
+
+/* ── Dark mode toggle button ──────────────────────────── */
+#theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 4px;
+    border-radius: 50%;
+    transition: opacity 0.2s ease;
+}
+
+#theme-toggle:hover { opacity: 0.6; }
